@@ -2,11 +2,11 @@
 Librairie EcoleDirecte en Java : JLibEcoleDirecte
 
 ## Fonctionnalités
-  🔐 Authentification pour les comptes **Élèves** 
-  📑 Récupération des **notes** 
-  👦🏻 Récupération des **informations du profil** 
-  🏫 Récupération des **informations de la classe** 
-  🏃🏽 Récupération des données de **vie scolaire** 
+🔐 Authentification pour les comptes **Élèves**  
+📑 Récupération des **notes**  
+👦🏻 Récupération des **informations du profil**  
+🏫 Récupération des **informations de la classe**  
+🏃🏽 Récupération des données de **vie scolaire**  
 
 ## Comment l'utiliser
 ➡️ Pour commencer, il vous faudra créer un objet `Session` qui prend en paramètres : `identifiant`,`pass`.
@@ -76,6 +76,6 @@ Vous pouvez aussi récupérer le nom de la classe de l'élève :
 
 ## Autres
 
-📖 Une documentation est à votre disposition (javadoc) dans le dossier "javadoc".  
-💾 Les versions de la librairie se trouvent dans le dossier "versions" (certaines versions peuvent venir à manquer car présentant des failles de sécurités)
+📖 Une documentation est à votre disposition (javadoc) dans le dossier "javadoc".   
+💾 Les versions de la librairie se trouvent dans le dossier "versions" (certaines versions peuvent venir à manquer car présentant des failles de sécurités) 
 
