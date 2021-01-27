@@ -2,6 +2,7 @@ package fr.benco11.jlibecoledirecte;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,9 @@ import fr.benco11.jlibecoledirecte.login.LoginJson;
 import fr.benco11.jlibecoledirecte.student.Grade;
 import fr.benco11.jlibecoledirecte.student.GradeDiscipline;
 import fr.benco11.jlibecoledirecte.student.GradeJson;
+import fr.benco11.jlibecoledirecte.student.GradePeriode;
+import fr.benco11.jlibecoledirecte.student.SchoolLifeData;
+import fr.benco11.jlibecoledirecte.student.SchoolLifeJson;
 import fr.benco11.jlibecoledirecte.utils.HttpUtils;
 
 public class Session {
@@ -47,7 +51,7 @@ public class Session {
 	
 	public int connect() throws EcoleDirecteLoginException {
 		try {
-			String r = HttpUtils.sendRequest("http://api.ecoledirecte.com/v3/login.awp", "data={\"identifiant\": \"" + username + "\", \"motdepasse\": \"" + pass + "\"}", "POST", true, true);
+			String r = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/login.awp", "data={\"identifiant\": \"" + username + "\", \"motdepasse\": \"" + pass + "\"}", "POST", true, true);
 			LoginJson loginJson = new Gson().fromJson(r, LoginJson.class);
 			if(loginJson.getCode() != 200) {
 				throw new EcoleDirecteLoginException(loginJson.getMessage());
@@ -322,6 +326,55 @@ public class Session {
 			
 			return disciplineJson.getData().getPeriodes().stream().filter(e -> e.getCodePeriode().equals("A00" + periode)).findFirst().get().getEnsembleMatieres().getDisciplines().stream().collect(Collectors.toList());
 			
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * Renvoie la liste des trimestres
+	 * @return la liste des trimestres
+	 * @throws EcoleDirecteAccountTypeException le compte utilisé n'est pas un compte élève
+	 * @throws EcoleDirecteUnknownConnectionException une erreur inconnue a eu lieu
+	 */
+	
+	public List<GradePeriode> getPeriodes() throws EcoleDirecteAccountTypeException, EcoleDirecteUnknownConnectionException {
+		if(!account.getTypeCompte().equals("E"))
+			throw new EcoleDirecteAccountTypeException(1);
+		
+		try {
+			String r = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/eleves/" + id + "/notes.awp?verbe=get&", "data={\"token\": \"" + token + "\"}", "POST", true, true);
+			GradeJson disciplineJson = new Gson().fromJson(r, GradeJson.class);
+			if(disciplineJson.getCode() != 200) {
+				throw new EcoleDirecteUnknownConnectionException();
+			}
+			
+			Object[] periodes = disciplineJson.getData().getPeriodes().toArray();
+			return Arrays.asList(Arrays.copyOf(periodes, periodes.length, GradePeriode[].class));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * Renvoie les données de la vie scolaire
+	 * @return l'objet de type <code>SchoolLifeData</code> correspondant aux données de la vie scolaire
+	 * @throws EcoleDirecteAccountTypeException le compte utilisé n'est pas un compte élève
+	 * @throws EcoleDirecteUnknownConnectionException une erreur inconnue a eu lieu
+	 */
+	
+	public SchoolLifeData getSchoolLifeData() throws EcoleDirecteAccountTypeException, EcoleDirecteUnknownConnectionException {
+		if(!account.getTypeCompte().equals("E"))
+			throw new EcoleDirecteAccountTypeException(1);
+		try {
+			String r = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/eleves/" + id + "/viescolaire.awp?verbe=get", "data={\"token\": \"" + token + "\"}", "POST", true, true);
+			SchoolLifeJson schoolLifeJson = new Gson().fromJson(r, SchoolLifeJson.class);
+			if(schoolLifeJson.getCode() != 200) {
+				throw new EcoleDirecteUnknownConnectionException();
+			}
+			return schoolLifeJson.getData();
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
