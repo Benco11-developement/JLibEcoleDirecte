@@ -9,7 +9,7 @@ public class EcoleDirecteAccountTypeException extends Exception {
 	
 	@Override
 	public String getMessage() {
-		return "Le compte utilisé n'est pas un compte " + ((id == 1) ? "élève" : "famille");
+		return "Le compte utilisÃ© n'est pas un compte " + ((id == 1) ? "Ã©lÃ¨ve" : "famille");
 	}
 	
 }
