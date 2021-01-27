@@ -76,6 +76,6 @@ Vous pouvez aussi récupérer le nom de la classe de l'élève :
 
 ## Autres
 
-📖 Une documentation est à votre disposition (javadoc) dans le dossier "javadoc". 
+📖 Une documentation est à votre disposition (javadoc) dans le dossier "javadoc".  
 💾 Les versions de la librairie se trouvent dans le dossier "versions" (certaines versions peuvent venir à manquer car présentant des failles de sécurités)
 
