@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class HttpUtils {
 	/**
-	 * Effectue une requête HTTP et renvoie le r�sultat
+	 * Effectue une requête HTTP et renvoie le résultat
 	 * @param address adresse du serveur ciblé
 	 * @param body contenu du message envoyé si <code>output</code> est <code>true</code> et si la méthode est <code>POST</code>
 	 * @param method méthode utilisé, soit <code>POST</code> soit <code>GET</code>
