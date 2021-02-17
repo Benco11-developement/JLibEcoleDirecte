@@ -4,10 +4,6 @@ plugins {
     id "com.github.johnrengelman.shadow" version "6.1.0"
 }
 
-configurations {
-    implementShadow
-}
-
 repositories {
     jcenter()
     mavenLocal()
