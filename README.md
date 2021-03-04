@@ -31,6 +31,12 @@ dependencies {
 		<url>https://jitpack.io</url>
 	</repository>
 </repositories>
+
+<dependency>
+	<groupId>com.github.Benco11-developement</groupId>
+	<artifactId>JLibEcoleDirecte</artifactId>
+	<version>Version</version>
+</dependency>
 ````
 		
 
