@@ -8,7 +8,34 @@ Librairie EcoleDirecte en Java : JLibEcoleDirecte
 🏫 Récupération des **informations de la classe**  
 🏃🏽 Récupération des données de **vie scolaire**  
 
+## Dépendances
+
+➡️ Gradle :
+
+``
+repositories {
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	implementation 'com.github.Benco11-developement:JLibEcoleDirecte:{Version}'
+}
+``
+
+➡️ Maven :
+
+``
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
+``
+		
+
 ## Comment l'utiliser
+
 ➡️ Pour commencer, il vous faudra créer un objet `Session` qui prend en paramètres : `identifiant`,`pass`.
 Pour initialiser la session, utilisez `Session#connect`. 
 
@@ -25,18 +52,18 @@ Dans l'exemple ci-dessous, on essaye de calculer la moyenne générale du trimes
     
     class AverageNote {
 	    public static void main(String[] args) {
-    	Session session = new Session("Jean Martin-Dupont", "VilebrequinTeCisaille");
-		try {
-		    session.connect();
-		    System.out.println(session.getAverageGrades(2).stream().mapToDouble(e -> Double.valueOf(e.getNote())).average().getAsDouble());
-		} catch (EcoleDirecteLoginException | EcoleDirecteUnknownConnectionException | EcoleDirecteAccountTypeException e) {
-    	    e.printStackTrace();
-		}
+    		Session session = new Session("Jean Martin-Dupont", "VilebrequinTeCisaille");
+			try {
+				session.connect();
+		    	System.out.println(session.getAverageGrades(2).stream().mapToDouble(e -> Double.valueOf(e.getNote())).average().getAsDouble());
+			} catch (EcoleDirecteLoginException | EcoleDirecteUnknownConnectionException | EcoleDirecteAccountTypeException e) {
+    	    	e.printStackTrace();
+			}
 	    }
     }
 
 
-⚠️ Si le trimestre est fini, il faut multiplier la note par le coefficient et diviser par la somme des coefficients :
+⚠️ Si et seulement si le trimestre est fini, on peut utiliser `GradeSetMatieres#getAppreciationPP`, `GradeSetMatieres#getAverage`, `GradeSetMatieres#getAverageClass`, `GradeSetMatieres#getMinAverage` et `GradeSetMatieres#getMaxAverage`.
 
     import fr.benco11.jlibecoledirecte.Session;
     import fr.benco11.jlibecoledirecte.exceptions.EcoleDirecteAccountTypeException;
@@ -47,15 +74,17 @@ Dans l'exemple ci-dessous, on essaye de calculer la moyenne générale du trimes
         public static void main(String[] args) {
         	Session session = new Session("Jean Martin-Dupont", "VilebrequinTeCisaille");
         	try {
-		    session.connect();
-		    double coef = session.getAverageGrades(1).stream().mapToDouble(e -> Double.valueOf(e.getCoef().replace(",", "."))).sum();
-		    System.out.println(session.getAverageGrades(1).stream().mapToDouble(e -> Double.valueOf(e.getNote().replace(",", ".")) * Double.valueOf(e.getCoef().replace(",", "."))).sum() / coef);
+		    	session.connect();
+		    	System.out.println("Moyenne : " + session.getPeriodes().get(0).getEnsembleMatieres().getAverage());
+				System.out.println("Appréciation : " + session.getPeriodes().get(0).getEnsembleMatieres().getAppreciationPP());
+				System.out.println("Moyenne générale : " + session.getPeriodes().get(0).getEnsembleMatieres().getAverageClass());
         	} catch (EcoleDirecteLoginException | EcoleDirecteUnknownConnectionException | EcoleDirecteAccountTypeException e) {
 	            e.printStackTrace();
         	}
         }
        
     }
+	
 Vous pouvez aussi récupérer le nom de la classe de l'élève :
 
     import fr.benco11.jlibecoledirecte.Session;
