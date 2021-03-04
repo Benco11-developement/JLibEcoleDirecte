@@ -61,9 +61,9 @@ Dans l'exemple ci-dessous, on essaye de calculer la moyenne générale du trimes
     		Session session = new Session("Jean Martin-Dupont", "VilebrequinTeCisaille");
 			try {
 				session.connect();
-		    	System.out.println(session.getAverageGrades(2).stream().mapToDouble(e -> Double.valueOf(e.getNote())).average().getAsDouble());
-			} catch (EcoleDirecteLoginException | EcoleDirecteUnknownConnectionException | EcoleDirecteAccountTypeException e) {
-    	    	e.printStackTrace();
+	    		System.out.println(session.getAverageGrades(2).stream().mapToDouble(e -> Double.valueOf(e.getNote())).average().getAsDouble());
+			} catch (EcoleDirecteLoginException | EcoleDirecteUnknownConnectionException | EcoleDirecteAccountTypeException | EcoleDirecteIOException | EcoleDirectePeriodeException e) {
+	    		e.printStackTrace();
 			}
 	    }
     }
@@ -81,12 +81,13 @@ Dans l'exemple ci-dessous, on essaye de calculer la moyenne générale du trimes
         	Session session = new Session("Jean Martin-Dupont", "VilebrequinTeCisaille");
         	try {
 		    	session.connect();
-		    	System.out.println("Moyenne : " + session.getPeriodes().get(0).getEnsembleMatieres().getAverage());
-				System.out.println("Appréciation : " + session.getPeriodes().get(0).getEnsembleMatieres().getAppreciationPP());
-				System.out.println("Moyenne générale : " + session.getPeriodes().get(0).getEnsembleMatieres().getAverageClass());
-        	} catch (EcoleDirecteLoginException | EcoleDirecteUnknownConnectionException | EcoleDirecteAccountTypeException e) {
-	            e.printStackTrace();
-        	}
+		    	GradePeriode periode = session.getPeriode(1); // On met en cache le résultat pour éviter de multiples requêtes
+				System.out.println("Moyenne : " + periode.getEnsembleMatieres().getAverage());
+				System.out.println("Appréciation : " + periode.getEnsembleMatieres().getAppreciationPP());
+				System.out.println("Moyenne générale : " + periode.getEnsembleMatieres().getAverageClass());
+        	} catch (EcoleDirecteLoginException | EcoleDirecteAccountTypeException | EcoleDirecteUnknownConnectionException | EcoleDirecteIOException | EcoleDirectePeriodeException e) {
+			e.printStackTrace();
+		}
         }
        
     }
@@ -98,17 +99,16 @@ Vous pouvez aussi récupérer le nom de la classe de l'élève :
     
     class ClassName {
 	    public static void main(String[] args) {
-    	Session session = new Session("Jean Martin-Dupont", "VilebrequinTeCisaille");
-    	try {
-    	    session.connect();
-    	    System.out.println(session.getAccount().getProfile().getClasse().getLibelle());
-    	} catch (EcoleDirecteLoginException e) {
-    	    e.printStackTrace();
-    	}
+    		Session session = new Session("Jean Martin-Dupont", "VilebrequinTeCisaille");
+    		try {
+    	   		session.connect();
+    	    	System.out.println(session.getAccount().getProfile().getClasse().getLibelle());
+    		} catch (EcoleDirecteLoginException e) {
+    	    	e.printStackTrace();
+    		}
 	    }
     }
-
-
+	
 ## Autres
 
 📖 Une documentation est à votre disposition (javadoc) dans le dossier "javadoc".   
