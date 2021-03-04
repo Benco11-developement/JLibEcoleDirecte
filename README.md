@@ -12,7 +12,7 @@ Librairie EcoleDirecte en Java : JLibEcoleDirecte
 
 ➡️ Gradle :
 
-``
+```
 repositories {
 	maven { url 'https://jitpack.io' }
 }
@@ -20,18 +20,18 @@ repositories {
 dependencies {
 	implementation 'com.github.Benco11-developement:JLibEcoleDirecte:{Version}'
 }
-``
+```
 
 ➡️ Maven :
 
-``
+```
 <repositories>
 	<repository>
 		<id>jitpack.io</id>
 		<url>https://jitpack.io</url>
 	</repository>
 </repositories>
-``
+````
 		
 
 ## Comment l'utiliser
