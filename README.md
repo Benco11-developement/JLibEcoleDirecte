@@ -1,6 +1,8 @@
 # JLibEcoleDirecte by Benco11
 Librairie EcoleDirecte en Java : JLibEcoleDirecte
 
+![Nombre de téléchargements](https://img.shields.io/github/downloads/Benco11-developement/JLibEcoleDirecte/total?color=%2300e636&label=T%C3%A9l%C3%A9chargements&style=flat-square "téléchargements")&nbsp;&nbsp;&nbsp;&nbsp; ![Nombre de vulnérabilités](https://img.shields.io/snyk/vulnerabilities/github/Benco11-developement/JLibEcoleDirecte?color=%23e60000&label=Vuln%C3%A9rabilit%C3%A9s&style=flat-square "vulnérabilités")&nbsp;&nbsp;&nbsp;&nbsp; ![Dernier commit](https://img.shields.io/github/last-commit/Benco11-developement/JLibEcoleDirecte?color=%230800ff&label=Dernier%20commit&style=flat-square "commit")&nbsp;&nbsp;&nbsp;&nbsp; ![Taille du repo](https://img.shields.io/github/repo-size/Benco11-developement/JLibEcoleDirecte?color=%23ff7700&label=Taille%20du%20repo&style=flat-square "repo")&nbsp;&nbsp;&nbsp;&nbsp; ![Jitpack](https://img.shields.io/jitpack/v/github/Benco11-developement/JLibEcoleDirecte?color=%237700ff&label=Jitpack&style=flat-square "jitpack")&nbsp;&nbsp;&nbsp;&nbsp; ![License](https://img.shields.io/github/license/Benco11-developement/JLibEcoleDirecte?color=%2300aeff&label=License&style=flat-square "license")&nbsp;&nbsp;&nbsp;&nbsp; ![Stars](https://img.shields.io/github/stars/Benco11-developement/JLibEcoleDirecte?color=%236fff00&label=Stars&style=flat-square "stars")
+
 ## Fonctionnalités
 🔐 Authentification pour les comptes **Élèves**  
 📑 Récupération des **notes**  
@@ -39,13 +41,12 @@ dependencies {
 </dependency>
 ````
 		
-
 ## Comment l'utiliser
 
 ➡️ Pour commencer, il vous faudra créer un objet `Session` qui prend en paramètres : `identifiant`,`pass`.
 Pour initialiser la session, utilisez `Session#connect`. 
 
-⚠️ Si les identifiants sont invalides, une erreur `EcoleDirecteLoginException`sera levée !
+⚠️ Si les identifiants sont invalides, une erreur `EcoleDirecteLoginException` sera levée !
 
 ## Quelques exemples
 
