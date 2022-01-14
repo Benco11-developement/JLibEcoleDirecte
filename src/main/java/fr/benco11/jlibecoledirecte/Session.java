@@ -465,11 +465,27 @@ public class Session {
 
 		try {
 			String r = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/E/" + this.id + "/emploidutemps.awp?verbe=get&", "data=" + data.toString(), "POST", true, true);
-			System.out.println(new JSONObject(r).getJSONArray("data").get(0).toString());
 			EmploiDuTempsJson emploiDuTempsJson = new Gson().fromJson(r, EmploiDuTempsJson.class);
 			if(emploiDuTempsJson.getCode() != 200) throw new EcoleDirecteUnknownConnectionException();
 
 			return emploiDuTempsJson.getData();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new EcoleDirecteIOException();
+		}
+	}
+
+	public Set<Note> getGrades() throws EcoleDirecteAccountTypeException, EcoleDirecteIOException, EcoleDirecteUnknownConnectionException {
+		if(!account.getTypeCompte().equals("E")) throw new EcoleDirecteAccountTypeException(1);
+
+		try {
+			String request = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/eleves/" +
+					this.id +
+					"/notes.awp?verbe=get&", ECOLEDIRECTE_JSON_DATA_START_TOKEN + token + "\"}", "POST", true, true);
+			NoteJson noteJson = new Gson().fromJson(request, NoteJson.class);
+			if(noteJson.getCode() != 200) throw new EcoleDirecteUnknownConnectionException();
+
+			return noteJson.getData().getNotes();
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new EcoleDirecteIOException();
