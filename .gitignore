@@ -3,3 +3,4 @@
 
 # Ignore Gradle build output directory
 build
+/src/main/java/fr/benco11/jlibecoledirecte/test/
