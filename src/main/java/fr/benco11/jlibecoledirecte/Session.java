@@ -448,7 +448,14 @@ public class Session {
 		}
 	}
 
-	public Set<Cours> getEmploiDuTemps(String dateDebut, String dateFin) throws EcoleDirecteAccountTypeException, EcoleDirecteUnknownConnectionException {
+	/**
+	 * Renvoie les cours d'une journée à une date
+	 * @return le set de valeur <code>Cours</code> correspondant aux cours de cette journée
+	 * @throws EcoleDirecteAccountTypeException le compte utilisé n'est pas un compte élève
+	 * @throws EcoleDirecteUnknownConnectionException une erreur inconnue a eu lieu
+	 * @throws EcoleDirecteIOException une erreur réseau a eu lieu
+	 */
+	public Set<Cours> getEmploiDuTemps(String dateDebut, String dateFin) throws EcoleDirecteAccountTypeException, EcoleDirecteUnknownConnectionException, EcoleDirecteIOException {
 		if(!account.getTypeCompte().equals("E")) throw new EcoleDirecteAccountTypeException(1);
 
 		JSONObject data = new JSONObject();
@@ -465,7 +472,7 @@ public class Session {
 			return emploiDuTempsJson.getData();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return null;
+			throw new EcoleDirecteIOException();
 		}
 	}
 }
