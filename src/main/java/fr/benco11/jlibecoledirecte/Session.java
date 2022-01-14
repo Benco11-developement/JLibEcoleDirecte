@@ -475,6 +475,13 @@ public class Session {
 		}
 	}
 
+	/**
+	 * Renvoie les notes de l'élève
+	 * @return le set de valeur <code>Note</code> correspondant aux notes de l'élève
+	 * @throws EcoleDirecteAccountTypeException le compte utilisé n'est pas un compte élève
+	 * @throws EcoleDirecteUnknownConnectionException une erreur inconnue a eu lieu
+	 * @throws EcoleDirecteIOException une erreur réseau a eu lieu
+	 */
 	public Set<Note> getGrades() throws EcoleDirecteAccountTypeException, EcoleDirecteIOException, EcoleDirecteUnknownConnectionException {
 		if(!account.getTypeCompte().equals("E")) throw new EcoleDirecteAccountTypeException(1);
 
