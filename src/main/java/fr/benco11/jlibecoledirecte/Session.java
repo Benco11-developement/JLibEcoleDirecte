@@ -498,4 +498,15 @@ public class Session {
 			throw new EcoleDirecteIOException();
 		}
 	}
+
+	public void getMessages() throws EcoleDirecteAccountTypeException {
+		if(!account.getTypeCompte().equals("E")) throw new EcoleDirecteAccountTypeException(1);
+
+		try {
+			String request = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/eleves/" + this.id + "/messages.awp?verbe=getall&", ECOLEDIRECTE_JSON_DATA_START_TOKEN + token + "\"}", "POST", true, true);
+			System.out.println(new JSONObject(request).getJSONArray("data"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
