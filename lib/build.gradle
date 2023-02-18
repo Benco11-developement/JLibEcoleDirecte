@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = targetCompatibility = 17
+
+compileJava.options.encoding = 'UTF-8'
+
+group 'fr.benco11'
+version '2.0.0'
+
+dependencies {
+    implementation project(":api")
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10'
+    compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+}
+
+shadowJar {
+    project.configurations.implementation.canBeResolved(true)
+    configurations = [project.configurations.implementation]
+}
+
+
+tasks.register('javadocJar', Jar) {
+    from javadoc
+    archiveClassifier.set("javadoc")
+    from javadoc.destinationDir
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    options.encoding = 'UTF-8'
+    options.addStringOption('source', '17')
+    docsDirName = '../docs/'
+}
+
+artifacts {
+    archives javadocJar
+}

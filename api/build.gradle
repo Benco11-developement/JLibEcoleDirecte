@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = targetCompatibility = 17
+
+compileJava.options.encoding = 'UTF-8'
+
+group 'fr.benco11'
+version '2.0.0'
