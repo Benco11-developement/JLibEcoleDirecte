@@ -1,10 +1,9 @@
 package fr.benco11.jlibecoledirecte;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
@@ -18,13 +17,10 @@ import fr.benco11.jlibecoledirecte.exceptions.EcoleDirectePeriodeException;
 import fr.benco11.jlibecoledirecte.exceptions.EcoleDirecteUnknownConnectionException;
 import fr.benco11.jlibecoledirecte.login.Account;
 import fr.benco11.jlibecoledirecte.login.LoginJson;
-import fr.benco11.jlibecoledirecte.student.Grade;
-import fr.benco11.jlibecoledirecte.student.GradeDiscipline;
-import fr.benco11.jlibecoledirecte.student.GradeJson;
-import fr.benco11.jlibecoledirecte.student.GradePeriode;
-import fr.benco11.jlibecoledirecte.student.SchoolLifeData;
-import fr.benco11.jlibecoledirecte.student.SchoolLifeJson;
+import fr.benco11.jlibecoledirecte.student.*;
 import fr.benco11.jlibecoledirecte.utils.HttpUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Session {
 	
@@ -449,6 +445,68 @@ public class Session {
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new EcoleDirecteIOException();
+		}
+	}
+
+	/**
+	 * Renvoie les cours d'une journée à une date
+	 * @return le set de valeur <code>Cours</code> correspondant aux cours de cette journée
+	 * @throws EcoleDirecteAccountTypeException le compte utilisé n'est pas un compte élève
+	 * @throws EcoleDirecteUnknownConnectionException une erreur inconnue a eu lieu
+	 * @throws EcoleDirecteIOException une erreur réseau a eu lieu
+	 */
+	public Set<Cours> getEmploiDuTemps(String dateDebut, String dateFin) throws EcoleDirecteAccountTypeException, EcoleDirecteUnknownConnectionException, EcoleDirecteIOException {
+		if(!account.getTypeCompte().equals("E")) throw new EcoleDirecteAccountTypeException(1);
+
+		JSONObject data = new JSONObject();
+		data.put("dateDebut", dateDebut);
+		data.put("dateFin", dateFin);
+		data.put("token", this.token);
+
+		try {
+			String r = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/E/" + this.id + "/emploidutemps.awp?verbe=get&", "data=" + data.toString(), "POST", true, true);
+			EmploiDuTempsJson emploiDuTempsJson = new Gson().fromJson(r, EmploiDuTempsJson.class);
+			if(emploiDuTempsJson.getCode() != 200) throw new EcoleDirecteUnknownConnectionException();
+
+			return emploiDuTempsJson.getData();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new EcoleDirecteIOException();
+		}
+	}
+
+	/**
+	 * Renvoie les notes de l'élève
+	 * @return le set de valeur <code>Note</code> correspondant aux notes de l'élève
+	 * @throws EcoleDirecteAccountTypeException le compte utilisé n'est pas un compte élève
+	 * @throws EcoleDirecteUnknownConnectionException une erreur inconnue a eu lieu
+	 * @throws EcoleDirecteIOException une erreur réseau a eu lieu
+	 */
+	public Set<Note> getGrades() throws EcoleDirecteAccountTypeException, EcoleDirecteIOException, EcoleDirecteUnknownConnectionException {
+		if(!account.getTypeCompte().equals("E")) throw new EcoleDirecteAccountTypeException(1);
+
+		try {
+			String request = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/eleves/" +
+					this.id +
+					"/notes.awp?verbe=get&", ECOLEDIRECTE_JSON_DATA_START_TOKEN + token + "\"}", "POST", true, true);
+			NoteJson noteJson = new Gson().fromJson(request, NoteJson.class);
+			if(noteJson.getCode() != 200) throw new EcoleDirecteUnknownConnectionException();
+
+			return noteJson.getData().getNotes();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new EcoleDirecteIOException();
+		}
+	}
+
+	public void getMessages() throws EcoleDirecteAccountTypeException {
+		if(!account.getTypeCompte().equals("E")) throw new EcoleDirecteAccountTypeException(1);
+
+		try {
+			String request = HttpUtils.sendRequest("https://api.ecoledirecte.com/v3/eleves/" + this.id + "/messages.awp?verbe=getall&", ECOLEDIRECTE_JSON_DATA_START_TOKEN + token + "\"}", "POST", true, true);
+			System.out.println(new JSONObject(request).getJSONArray("data"));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
