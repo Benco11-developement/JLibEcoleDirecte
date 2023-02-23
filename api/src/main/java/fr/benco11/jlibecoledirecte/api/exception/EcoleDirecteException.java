@@ -9,6 +9,9 @@ public abstract class EcoleDirecteException extends Exception {
         this.message = message;
     }
 
+    public EcoleDirecteException() {
+    }
+
     @Override
     public String getMessage() {
         return message;

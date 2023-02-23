@@ -7,6 +7,8 @@ import fr.benco11.jlibecoledirecte.api.session.SessionBuilder;
 import fr.benco11.jlibecoledirecte.lib.dto.input.LoginDTO;
 import fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO;
 import fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO;
+import fr.benco11.jlibecoledirecte.lib.mapper.AccountMapper;
+import fr.benco11.jlibecoledirecte.lib.user.AccountImplementation;
 import fr.benco11.jlibecoledirecte.lib.user.DefaultSession;
 import fr.benco11.jlibecoledirecte.lib.utils.HttpUtils;
 import fr.benco11.jlibecoledirecte.lib.utils.JsonUtils;
@@ -40,11 +42,14 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
         return this;
     }
 
-    public Session login() throws LoginEcoleDirecteException, URISyntaxException, IOException, InterruptedException {
+    public Session login() throws URISyntaxException, IOException, InterruptedException, LoginEcoleDirecteException {
         if(cacheDuration != null) return null;
 
         LoginDTO loginDTO = new LoginDTO(username, password);
-        JsonObject loginResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.LOGIN.asString(), JsonUtils.serialize(loginDTO)));
+        JsonObject loginResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.LOGIN.asString(), JsonUtils.serialize(loginDTO), new LoginEcoleDirecteException()));
+        if(!loginResult.has("token")) throw new LoginEcoleDirecteException(loginResult.get("code")
+                                                                                      .getAsInt(), loginResult.get("message")
+                                                                                                              .getAsString());
         String token = loginResult.get("token")
                                   .getAsString();
         AccountDTO accountDTO = JsonUtils.deserialize(loginResult.getAsJsonObject("data")
@@ -52,9 +57,9 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
                                                                  .get(0), AccountDTO.class);
         long idLogin = accountDTO.idLogin();
 
-        JsonObject settingsResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.SETTINGS.asString(idLogin), JsonUtils.serialize(null), tokenHeader(token)));
+        JsonObject settingsResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.SETTINGS.asString(idLogin), JsonUtils.serialize(new Object()), tokenHeader(token), new LoginEcoleDirecteException()));
         SettingsDTO settingsDTO = JsonUtils.deserialize(settingsResult.get("data"), SettingsDTO.class);
 
-        return new DefaultSession(token, idLogin, sessionDuration, accountDTO, settingsDTO);
+        return new DefaultSession(token, idLogin, sessionDuration, accountDTO.lastConnexion(), AccountMapper.MAPPER.accountDTOAndSettingsDTOToDefaultAccount(accountDTO, idLogin, settingsDTO, password, AccountImplementation.DEFAULT));
     }
 }

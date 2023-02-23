@@ -2,13 +2,13 @@ package fr.benco11.jlibecoledirecte.api.user;
 
 import java.util.Map;
 
-public interface Module {
+public interface EcoleDirecteModule {
     String code();
 
     boolean enabled();
 
     int order();
 
-    Map<String, Boolean> params();
+    Map<String, Object> params();
 
 }

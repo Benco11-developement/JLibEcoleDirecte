@@ -3,11 +3,12 @@ package fr.benco11.jlibecoledirecte.api.user;
 import java.util.List;
 
 public interface Account {
-    String currentSchoolYear();
 
-    User user();
+    UserProfile userProfile();
 
-    List<Module> modules();
+    PersonalDetails personalDetails();
+
+    List<EcoleDirecteModule> modules();
 
     AccountType accountType();
 }

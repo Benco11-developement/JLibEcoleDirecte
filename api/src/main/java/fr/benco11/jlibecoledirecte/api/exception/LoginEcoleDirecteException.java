@@ -5,8 +5,13 @@ public class LoginEcoleDirecteException extends EcoleDirecteException {
         super(code, message);
     }
 
+    public LoginEcoleDirecteException() {
+        super();
+    }
+
     @Override
     public String getMessage() {
-        return "Erreur lors de la connexion (code " + code + ") : " + message;
+        return (message != null) ? "Erreur lors de la connexion (code " + code + ") : " + message
+                                 : "Erreur lors de la connexion !";
     }
 }

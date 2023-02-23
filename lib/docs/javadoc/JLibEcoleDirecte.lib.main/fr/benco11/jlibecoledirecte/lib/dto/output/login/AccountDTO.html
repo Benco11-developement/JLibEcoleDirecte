@@ -78,7 +78,7 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">AccountDTO</span>(long&nbsp;id, long&nbsp;idLogin, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;identifiant, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;typeCompte, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prenom, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nom, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;anneeScolaireCourante, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&gt;&nbsp;modules, <a href="ProfileDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ProfileDTO</a>&nbsp;profile)
+<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">AccountDTO</span>(long&nbsp;id, long&nbsp;idLogin, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;identifiant, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;typeCompte, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;prenom, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nom, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;anneeScolaireCourante, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&gt;&nbsp;modules, <a href="ProfileDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ProfileDTO</a>&nbsp;profile, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nomEtablissement, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a>&nbsp;lastConnexion)
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a></span></div>
 </section>
 <section class="summary">
@@ -91,7 +91,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(long,long,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.util.List,fr.benco11.jlibecoledirecte.lib.dto.output.login.ProfileDTO)" class="member-name-link">AccountDTO</a><wbr>(long&nbsp;id,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(long,long,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.util.List,fr.benco11.jlibecoledirecte.lib.dto.output.login.ProfileDTO,java.lang.String,java.util.Date)" class="member-name-link">AccountDTO</a><wbr>(long&nbsp;id,
  long&nbsp;idLogin,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;identifiant,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;typeCompte,
@@ -100,7 +100,9 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nom,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;anneeScolaireCourante,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&gt;&nbsp;modules,
- <a href="ProfileDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ProfileDTO</a>&nbsp;profile)</code></div>
+ <a href="ProfileDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ProfileDTO</a>&nbsp;profile,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nomEtablissement,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a>&nbsp;lastConnexion)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Creates an instance of a <code>AccountDTO</code> record class.</div>
 </div>
@@ -153,15 +155,25 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the value of the <code>idLogin</code> record component.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#modules()" class="member-name-link">modules</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#lastConnexion()" class="member-name-link">lastConnexion</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the value of the <code>lastConnexion</code> record component.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#modules()" class="member-name-link">modules</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the value of the <code>modules</code> record component.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#nom()" class="member-name-link">nom</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#nom()" class="member-name-link">nom</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the value of the <code>nom</code> record component.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#nomEtablissement()" class="member-name-link">nomEtablissement</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the value of the <code>nomEtablissement</code> record component.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#prenom()" class="member-name-link">prenom</a>()</code></div>
@@ -201,7 +213,7 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(long,long,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.util.List,fr.benco11.jlibecoledirecte.lib.dto.output.login.ProfileDTO)">
+<section class="detail" id="&lt;init&gt;(long,long,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.util.List,fr.benco11.jlibecoledirecte.lib.dto.output.login.ProfileDTO,java.lang.String,java.util.Date)">
 <h3>AccountDTO</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AccountDTO</span><wbr><span class="parameters">(long&nbsp;id,
  long&nbsp;idLogin,
@@ -212,7 +224,9 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nom,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;anneeScolaireCourante,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&gt;&nbsp;modules,
- <a href="ProfileDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ProfileDTO</a>&nbsp;profile)</span></div>
+ <a href="ProfileDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ProfileDTO</a>&nbsp;profile,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nomEtablissement,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a>&nbsp;lastConnexion)</span></div>
 <div class="block">Creates an instance of a <code>AccountDTO</code> record class.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -226,6 +240,8 @@ loadScripts(document, 'script');</script>
 <dd><code>anneeScolaireCourante</code> - the value for the <code>anneeScolaireCourante</code> record component</dd>
 <dd><code>modules</code> - the value for the <code>modules</code> record component</dd>
 <dd><code>profile</code> - the value for the <code>profile</code> record component</dd>
+<dd><code>nomEtablissement</code> - the value for the <code>nomEtablissement</code> record component</dd>
+<dd><code>lastConnexion</code> - the value for the <code>lastConnexion</code> record component</dd>
 </dl>
 </section>
 </li>
@@ -385,6 +401,28 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>the value of the <code>profile</code> record component</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="nomEtablissement()">
+<h3>nomEtablissement</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">nomEtablissement</span>()</div>
+<div class="block">Returns the value of the <code>nomEtablissement</code> record component.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the value of the <code>nomEtablissement</code> record component</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="lastConnexion()">
+<h3>lastConnexion</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a></span>&nbsp;<span class="element-name">lastConnexion</span>()</div>
+<div class="block">Returns the value of the <code>lastConnexion</code> record component.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the value of the <code>lastConnexion</code> record component</dd>
 </dl>
 </section>
 </li>

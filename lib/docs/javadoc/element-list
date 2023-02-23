@@ -2,5 +2,7 @@ module:JLibEcoleDirecte.lib.main
 fr.benco11.jlibecoledirecte.lib
 fr.benco11.jlibecoledirecte.lib.dto.input
 fr.benco11.jlibecoledirecte.lib.dto.output.login
+fr.benco11.jlibecoledirecte.lib.exception.runtime
+fr.benco11.jlibecoledirecte.lib.mapper
 fr.benco11.jlibecoledirecte.lib.user
 fr.benco11.jlibecoledirecte.lib.utils

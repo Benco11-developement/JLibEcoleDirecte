@@ -9,7 +9,7 @@ public class JsonUtils {
     private JsonUtils() {
     }
 
-    public static final Gson gson = new GsonBuilder().serializeNulls()
+    public static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm")
                                                      .create();
 
     public static String serialize(Object o) {

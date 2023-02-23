@@ -94,11 +94,11 @@ implements fr.benco11.jlibecoledirecte.api.session.Session</span></div>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,long,java.time.Duration,fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO)" class="member-name-link">DefaultSession</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;token,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,long,java.time.Duration,java.util.Date,fr.benco11.jlibecoledirecte.api.user.Account)" class="member-name-link">DefaultSession</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;token,
  long&nbsp;idLogin,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;sessionValidity,
- <a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
- <a href="../dto/output/login/SettingsDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO)</code></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a>&nbsp;lastLogin,
+ fr.benco11.jlibecoledirecte.api.user.Account&nbsp;account)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -123,6 +123,9 @@ implements fr.benco11.jlibecoledirecte.api.session.Session</span></div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isValid()" class="member-name-link">isValid</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#lastLogin()" class="member-name-link">lastLogin</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -141,13 +144,13 @@ implements fr.benco11.jlibecoledirecte.api.session.Session</span></div>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,long,java.time.Duration,fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,long,java.time.Duration,java.util.Date,fr.benco11.jlibecoledirecte.api.user.Account)">
 <h3>DefaultSession</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">DefaultSession</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;token,
  long&nbsp;idLogin,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;sessionValidity,
- <a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
- <a href="../dto/output/login/SettingsDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO)</span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a>&nbsp;lastLogin,
+ fr.benco11.jlibecoledirecte.api.user.Account&nbsp;account)</span></div>
 </section>
 </li>
 </ul>
@@ -165,6 +168,16 @@ implements fr.benco11.jlibecoledirecte.api.session.Session</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code>isValid</code>&nbsp;in interface&nbsp;<code>fr.benco11.jlibecoledirecte.api.session.Session</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="lastLogin()">
+<h3>lastLogin</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a></span>&nbsp;<span class="element-name">lastLogin</span>()</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code>lastLogin</code>&nbsp;in interface&nbsp;<code>fr.benco11.jlibecoledirecte.api.session.Session</code></dd>
 </dl>
 </section>
 </li>

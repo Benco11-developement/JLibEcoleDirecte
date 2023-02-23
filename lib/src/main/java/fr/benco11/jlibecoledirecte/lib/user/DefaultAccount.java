@@ -1,34 +1,38 @@
 package fr.benco11.jlibecoledirecte.lib.user;
 
 
-import fr.benco11.jlibecoledirecte.api.user.Account;
-import fr.benco11.jlibecoledirecte.api.user.AccountType;
-import fr.benco11.jlibecoledirecte.api.user.Module;
-import fr.benco11.jlibecoledirecte.api.user.User;
+import fr.benco11.jlibecoledirecte.api.user.*;
 
 import java.util.List;
 
-public class DefaultAccount implements Account {
-    private long idLogin;
-    private AccountType accountType;
-    private List<Module> modules;
-    private String username;
-    private String firstName;
-    private String lastName;
-    private String email;
+public abstract sealed class DefaultAccount implements Account permits StudentAccount {
+    protected long idLogin;
+    protected AccountType accountType;
+    protected List<EcoleDirecteModule> modules;
+    protected PersonalDetails personalDetails;
+    protected UserProfile userProfile;
 
-    @Override
-    public String currentSchoolYear() {
-        return null;
+    public DefaultAccount(long idLogin, AccountType accountType, List<EcoleDirecteModule> modules,
+            PersonalDetails personalDetails, UserProfile userProfile) {
+        this.idLogin = idLogin;
+        this.accountType = accountType;
+        this.modules = modules;
+        this.personalDetails = personalDetails;
+        this.userProfile = userProfile;
     }
 
     @Override
-    public User user() {
-        return null;
+    public UserProfile userProfile() {
+        return userProfile;
     }
 
     @Override
-    public List<Module> modules() {
+    public PersonalDetails personalDetails() {
+        return personalDetails;
+    }
+
+    @Override
+    public List<EcoleDirecteModule> modules() {
         return modules;
     }
 
