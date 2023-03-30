@@ -3,7 +3,7 @@ package fr.benco11.jlibecoledirecte.api.grades;
 import java.util.Date;
 
 public interface Mark {
-    int coef();
+    double coef();
 
     double outOf();
 
@@ -11,9 +11,11 @@ public interface Mark {
 
     double user();
 
-    double schoolClassGrade();
+    double schoolClass();
 
     double schoolClassMin();
 
     double schoolClassMax();
+
+    boolean isValueBased();
 }

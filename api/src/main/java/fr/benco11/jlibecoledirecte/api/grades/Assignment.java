@@ -11,9 +11,16 @@ public interface Assignment {
 
     String disciplineCode();
 
+    String disciplineLabel();
+
+    String subDisciplineCode();
+
+    String assignmentType();
+
+    String comment();
+
     Date date();
 
     Mark mark();
 
-    boolean isValueBased();
 }

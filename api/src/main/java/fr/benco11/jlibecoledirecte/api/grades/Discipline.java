@@ -5,7 +5,11 @@ import java.util.List;
 public interface Discipline {
     int id();
 
+    int groupId();
+
     int row();
+
+    int headcount();
 
     String code();
 
@@ -15,9 +19,13 @@ public interface Discipline {
 
     Mark average();
 
-    String comment();
+    List<String> comments();
 
     boolean isSubDiscipline();
+
+    boolean isGroupDiscipline();
+
+    boolean isOptional();
 
     List<Teacher> teachers();
 

@@ -100,25 +100,53 @@ loadScripts(document, 'script');</script>
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab3" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab3', 3)" class="table-tab">Abstract Methods</button><button id="method-summary-table-tab5" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab5', 3)" class="table-tab">Default Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
-<div class="table-header col-first">Modifier and Type</div>
-<div class="table-header col-second">Method</div>
-<div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="../user/DefaultAccount.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultAccount</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#accountDTOAndSettingsDTOToDefaultAccount(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,long,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO,java.lang.String,fr.benco11.jlibecoledirecte.lib.user.AccountImplementation)" class="member-name-link">accountDTOAndSettingsDTOToDefaultAccount</a><wbr>(<a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
- long&nbsp;idLogin,
- <a href="../dto/output/login/SettingsDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
- <a href="../user/AccountImplementation.html" title="enum class in fr.benco11.jlibecoledirecte.lib.user">AccountImplementation</a>&nbsp;accountImplementation)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../user/DefaultUserProfile.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultUserProfile</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#accountDTOAndSettingsDTOToUserProfile(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO,java.lang.String)" class="member-name-link">accountDTOAndSettingsDTOToUserProfile</a><wbr>(<a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
- <a href="../dto/output/login/SettingsDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../user/DefaultPersonalDetails.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultPersonalDetails</a></code></div>
+    <div class="table-header col-first">Modifier and Type</div>
+    <div class="table-header col-second">Method</div>
+    <div class="table-header col-last">Description</div>
+    <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+        <code>default <a href="../account/BasicAccount.html" title="class in fr.benco11.jlibecoledirecte.lib.account">BasicAccount</a></code>
+    </div>
+    <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+        <code><a
+                href="#accountDTOAndSettingsDTOToDefaultAccount(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO,java.lang.String,fr.benco11.jlibecoledirecte.lib.factory.AccountFactory,fr.benco11.jlibecoledirecte.api.session.SessionContext)"
+                class="member-name-link">accountDTOAndSettingsDTOToDefaultAccount</a>
+            <wbr>
+            (<a href="../dto/output/login/AccountDTO.html"
+                title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
+            <a href="../dto/output/login/SettingsDTO.html"
+               title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO,
+            <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+               title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
+            <a href="../factory/AccountFactory.html" title="interface in fr.benco11.jlibecoledirecte.lib.factory">AccountFactory</a>&nbsp;accountFactory,
+            fr.benco11.jlibecoledirecte.api.session.SessionContext&nbsp;context)</code></div>
+    <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+        &nbsp;
+    </div>
+    <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a
+            href="../account/DefaultUserProfile.html" title="class in fr.benco11.jlibecoledirecte.lib.account">DefaultUserProfile</a></code>
+    </div>
+    <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+        <code><a
+                href="#accountDTOAndSettingsDTOToUserProfile(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO,java.lang.String)"
+                class="member-name-link">accountDTOAndSettingsDTOToUserProfile</a>
+            <wbr>
+            (<a href="../dto/output/login/AccountDTO.html"
+                title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
+            <a href="../dto/output/login/SettingsDTO.html"
+               title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO,
+            <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+               title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</code></div>
+    <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+        &nbsp;
+    </div>
+    <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+        <code><a href="../account/DefaultPersonalDetails.html" title="class in fr.benco11.jlibecoledirecte.lib.account">DefaultPersonalDetails</a></code>
+    </div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#accountDTOToPersonalDetails(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO)" class="member-name-link">accountDTOToPersonalDetails</a><wbr>(<a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../user/DefaultEcoleDirecteModule.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultEcoleDirecteModule</a></code></div>
+    <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a
+            href="../account/DefaultEcoleDirecteModule.html" title="class in fr.benco11.jlibecoledirecte.lib.account">DefaultEcoleDirecteModule</a></code>
+    </div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#moduleDTOToModule(fr.benco11.jlibecoledirecte.lib.dto.output.login.ModuleDTO)" class="member-name-link">moduleDTOToModule</a><wbr>(<a href="../dto/output/login/ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&nbsp;moduleDTO)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
 </div>
@@ -150,34 +178,62 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="accountDTOAndSettingsDTOToDefaultAccount(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,long,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO,java.lang.String,fr.benco11.jlibecoledirecte.lib.user.AccountImplementation)">
-<h3>accountDTOAndSettingsDTOToDefaultAccount</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="../user/DefaultAccount.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultAccount</a></span>&nbsp;<span class="element-name">accountDTOAndSettingsDTOToDefaultAccount</span><wbr><span class="parameters">(<a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
- long&nbsp;idLogin,
+    <section class="detail"
+             id="accountDTOAndSettingsDTOToDefaultAccount(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO,java.lang.String,fr.benco11.jlibecoledirecte.lib.factory.AccountFactory,fr.benco11.jlibecoledirecte.api.session.SessionContext)">
+        <h3>accountDTOAndSettingsDTOToDefaultAccount</h3>
+        <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a
+                href="../account/BasicAccount.html" title="class in fr.benco11.jlibecoledirecte.lib.account">BasicAccount</a></span>&nbsp;<span
+                class="element-name">accountDTOAndSettingsDTOToDefaultAccount</span>
+            <wbr>
+            <span class="parameters">(<a href="../dto/output/login/AccountDTO.html"
+                                         title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
  <a href="../dto/output/login/SettingsDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
- <a href="../user/AccountImplementation.html" title="enum class in fr.benco11.jlibecoledirecte.lib.user">AccountImplementation</a>&nbsp;accountImplementation)</span></div>
-</section>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+    title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
+ <a href="../factory/AccountFactory.html"
+    title="interface in fr.benco11.jlibecoledirecte.lib.factory">AccountFactory</a>&nbsp;accountFactory,
+ fr.benco11.jlibecoledirecte.api.session.SessionContext&nbsp;context)</span></div>
+    </section>
 </li>
 <li>
 <section class="detail" id="moduleDTOToModule(fr.benco11.jlibecoledirecte.lib.dto.output.login.ModuleDTO)">
 <h3>moduleDTOToModule</h3>
-<div class="member-signature"><span class="return-type"><a href="../user/DefaultEcoleDirecteModule.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultEcoleDirecteModule</a></span>&nbsp;<span class="element-name">moduleDTOToModule</span><wbr><span class="parameters">(<a href="../dto/output/login/ModuleDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&nbsp;moduleDTO)</span></div>
+    <div class="member-signature"><span class="return-type"><a href="../account/DefaultEcoleDirecteModule.html"
+                                                               title="class in fr.benco11.jlibecoledirecte.lib.account">DefaultEcoleDirecteModule</a></span>&nbsp;<span
+            class="element-name">moduleDTOToModule</span>
+        <wbr>
+        <span class="parameters">(<a href="../dto/output/login/ModuleDTO.html"
+                                     title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">ModuleDTO</a>&nbsp;moduleDTO)</span>
+    </div>
 </section>
 </li>
 <li>
 <section class="detail" id="accountDTOToPersonalDetails(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO)">
 <h3>accountDTOToPersonalDetails</h3>
-<div class="member-signature"><span class="return-type"><a href="../user/DefaultPersonalDetails.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultPersonalDetails</a></span>&nbsp;<span class="element-name">accountDTOToPersonalDetails</span><wbr><span class="parameters">(<a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO)</span></div>
+    <div class="member-signature"><span class="return-type"><a href="../account/DefaultPersonalDetails.html"
+                                                               title="class in fr.benco11.jlibecoledirecte.lib.account">DefaultPersonalDetails</a></span>&nbsp;<span
+            class="element-name">accountDTOToPersonalDetails</span>
+        <wbr>
+        <span class="parameters">(<a href="../dto/output/login/AccountDTO.html"
+                                     title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO)</span>
+    </div>
 </section>
 </li>
 <li>
 <section class="detail" id="accountDTOAndSettingsDTOToUserProfile(fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO,fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO,java.lang.String)">
 <h3>accountDTOAndSettingsDTOToUserProfile</h3>
-<div class="member-signature"><span class="return-type"><a href="../user/DefaultUserProfile.html" title="class in fr.benco11.jlibecoledirecte.lib.user">DefaultUserProfile</a></span>&nbsp;<span class="element-name">accountDTOAndSettingsDTOToUserProfile</span><wbr><span class="parameters">(<a href="../dto/output/login/AccountDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
+    <div class="member-signature"><span class="return-type"><a href="../account/DefaultUserProfile.html"
+                                                               title="class in fr.benco11.jlibecoledirecte.lib.account">DefaultUserProfile</a></span>&nbsp;<span
+            class="element-name">accountDTOAndSettingsDTOToUserProfile</span>
+        <wbr>
+        <span class="parameters">(<a href="../dto/output/login/AccountDTO.html"
+                                     title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">AccountDTO</a>&nbsp;accountDTO,
  <a href="../dto/output/login/SettingsDTO.html" title="class in fr.benco11.jlibecoledirecte.lib.dto.output.login">SettingsDTO</a>&nbsp;settingsDTO,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</span>
-                                                  throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/MalformedURLException.html" title="class or interface in java.net" class="external-link">MalformedURLException</a></span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+    title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</span>
+        throws <span class="exceptions"><a
+                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/MalformedURLException.html"
+                title="class or interface in java.net" class="external-link">MalformedURLException</a></span></div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/MalformedURLException.html" title="class or interface in java.net" class="external-link">MalformedURLException</a></code></dd>

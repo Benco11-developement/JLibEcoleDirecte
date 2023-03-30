@@ -1,14 +1,19 @@
 package fr.benco11.jlibecoledirecte.lib.mapper;
 
-import fr.benco11.jlibecoledirecte.api.user.AccountType;
-import fr.benco11.jlibecoledirecte.api.user.EcoleDirecteModule;
-import fr.benco11.jlibecoledirecte.api.user.PersonalDetails;
-import fr.benco11.jlibecoledirecte.api.user.UserProfile;
+import fr.benco11.jlibecoledirecte.api.account.AccountType;
+import fr.benco11.jlibecoledirecte.api.account.EcoleDirecteModule;
+import fr.benco11.jlibecoledirecte.api.account.PersonalDetails;
+import fr.benco11.jlibecoledirecte.api.account.UserProfile;
+import fr.benco11.jlibecoledirecte.api.session.SessionContext;
+import fr.benco11.jlibecoledirecte.lib.account.BasicAccount;
+import fr.benco11.jlibecoledirecte.lib.account.DefaultEcoleDirecteModule;
+import fr.benco11.jlibecoledirecte.lib.account.DefaultPersonalDetails;
+import fr.benco11.jlibecoledirecte.lib.account.DefaultUserProfile;
 import fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO;
 import fr.benco11.jlibecoledirecte.lib.dto.output.login.ModuleDTO;
 import fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO;
 import fr.benco11.jlibecoledirecte.lib.exception.runtime.EcoleDirecteMappingException;
-import fr.benco11.jlibecoledirecte.lib.user.*;
+import fr.benco11.jlibecoledirecte.lib.factory.AccountFactory;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -20,25 +25,20 @@ import java.util.List;
 public interface AccountMapper {
     AccountMapper MAPPER = Mappers.getMapper(AccountMapper.class);
 
-    default DefaultAccount accountDTOAndSettingsDTOToDefaultAccount(
-            AccountDTO accountDTO, long idLogin, SettingsDTO settingsDTO, String password,
-            AccountImplementation accountImplementation) {
+    default BasicAccount accountDTOAndSettingsDTOToDefaultAccount(
+            AccountDTO accountDTO, SettingsDTO settingsDTO, String password,
+            AccountFactory accountFactory, SessionContext context) {
         try {
             AccountType accountType = AccountType.accountType(accountDTO.typeCompte())
-                                                 .orElseThrow(EcoleDirecteMappingException::new);
+                    .orElseThrow(EcoleDirecteMappingException::new);
             List<EcoleDirecteModule> modules = accountDTO.modules()
-                                                         .stream()
-                                                         .map(dto -> (EcoleDirecteModule) moduleDTOToModule(dto))
-                                                         .toList();
+                    .stream()
+                    .map(dto -> (EcoleDirecteModule) moduleDTOToModule(dto))
+                    .toList();
             PersonalDetails personalDetails = accountDTOToPersonalDetails(accountDTO);
             UserProfile userProfile = accountDTOAndSettingsDTOToUserProfile(accountDTO, settingsDTO, password);
-            return switch(accountImplementation) {
-                default -> switch(accountType) {
-                    default ->
-                            new StudentAccount(idLogin, accountType, modules, personalDetails, userProfile);
-                };
-            };
-        } catch(MalformedURLException exception) {
+            return accountFactory.getAccount(accountType, modules, personalDetails, userProfile, context);
+        } catch (MalformedURLException exception) {
             throw new EcoleDirecteMappingException();
         }
     }
@@ -57,10 +57,11 @@ public interface AccountMapper {
     DefaultPersonalDetails accountDTOToPersonalDetails(AccountDTO accountDTO);
 
 
+    @Mapping(target = "id", source = "accountDTO.id")
     @Mapping(target = "email", source = "accountDTO.email")
     @Mapping(target = "username", source = "accountDTO.identifiant")
     @Mapping(target = "phone", source = "settingsDTO.portable")
     @Mapping(target = "pictureURL", expression = "java(fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.HttpProtocol.HTTPS.getURL(accountDTO.profile().photo().replaceAll(\"^//\", \"\")))")
     DefaultUserProfile accountDTOAndSettingsDTOToUserProfile(AccountDTO accountDTO,
-            SettingsDTO settingsDTO, String password) throws MalformedURLException;
+                                                             SettingsDTO settingsDTO, String password) throws MalformedURLException;
 }

@@ -10,6 +10,11 @@ module JLibEcoleDirecte.lib.main {
     exports fr.benco11.jlibecoledirecte.lib.exception.runtime;
     exports fr.benco11.jlibecoledirecte.lib.mapper;
     exports fr.benco11.jlibecoledirecte.lib.utils;
-    exports fr.benco11.jlibecoledirecte.lib.user;
+    exports fr.benco11.jlibecoledirecte.lib.account;
     exports fr.benco11.jlibecoledirecte.lib.dto.input;
+    exports fr.benco11.jlibecoledirecte.lib.dto.output.grades;
+    exports fr.benco11.jlibecoledirecte.lib.session;
+    exports fr.benco11.jlibecoledirecte.lib.adapter;
+    exports fr.benco11.jlibecoledirecte.lib.factory;
+    exports fr.benco11.jlibecoledirecte.lib.grades;
 }

@@ -1,8 +1,13 @@
 module:JLibEcoleDirecte.lib.main
 fr.benco11.jlibecoledirecte.lib
+fr.benco11.jlibecoledirecte.lib.account
+fr.benco11.jlibecoledirecte.lib.adapter
 fr.benco11.jlibecoledirecte.lib.dto.input
+fr.benco11.jlibecoledirecte.lib.dto.output.grades
 fr.benco11.jlibecoledirecte.lib.dto.output.login
 fr.benco11.jlibecoledirecte.lib.exception.runtime
+fr.benco11.jlibecoledirecte.lib.factory
+fr.benco11.jlibecoledirecte.lib.grades
 fr.benco11.jlibecoledirecte.lib.mapper
-fr.benco11.jlibecoledirecte.lib.user
+fr.benco11.jlibecoledirecte.lib.session
 fr.benco11.jlibecoledirecte.lib.utils

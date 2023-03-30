@@ -1,11 +1,11 @@
 package fr.benco11.jlibecoledirecte.api.session;
 
-import fr.benco11.jlibecoledirecte.api.user.Account;
+import fr.benco11.jlibecoledirecte.api.account.Account;
 
 import java.util.Date;
 
 public interface Session {
-    long idLogin();
+    SessionContext context();
 
     Account account();
 

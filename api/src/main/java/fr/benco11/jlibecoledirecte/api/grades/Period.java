@@ -9,15 +9,15 @@ public interface Period {
 
     String name();
 
-    boolean isAnnual();
+    boolean annual();
 
-    java.time.Period periodDate();
+    java.time.Period date();
 
     boolean mockExam();
 
     boolean ended();
 
-    Mark generalAverage();
+    Mark average();
 
     Teacher formTeacher();
 

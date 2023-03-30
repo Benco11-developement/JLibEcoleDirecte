@@ -12,6 +12,6 @@ public class LoginEcoleDirecteException extends EcoleDirecteException {
     @Override
     public String getMessage() {
         return (message != null) ? "Erreur lors de la connexion (code " + code + ") : " + message
-                                 : "Erreur lors de la connexion !";
+                : "Erreur lors de la connexion !";
     }
 }
