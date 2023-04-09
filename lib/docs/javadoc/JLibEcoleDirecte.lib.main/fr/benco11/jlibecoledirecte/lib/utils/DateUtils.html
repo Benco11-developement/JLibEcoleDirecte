@@ -123,47 +123,57 @@ loadScripts(document, 'script');</script>
                                         <div class="table-header col-last">Description</div>
                                         <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
                                             <code>static <a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/DateFormat.html"
-                                                    title="class or interface in java.text" class="external-link">DateFormat</a></code>
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                                    title="class or interface in java.time" class="external-link">LocalDate</a></code>
                                         </div>
                                         <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-                                            <code><a href="#format(java.lang.String)"
-                                                     class="member-name-link">format</a>
+                                            <code><a
+                                                    href="#parseLocalDate(java.lang.String,java.time.format.DateTimeFormatter)"
+                                                    class="member-name-link">parseLocalDate</a>
                                                 <wbr>
                                                 (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
-                                                    class="external-link">String</a>&nbsp;format)</code></div>
+                                                    class="external-link">String</a>&nbsp;toParse,
+                                                <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html"
+                                                   title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&nbsp;format)</code>
+                                        </div>
                                         <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
                                             &nbsp;
                                         </div>
                                         <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
                                             <code>static <a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
-                                                    title="class or interface in java.time" class="external-link">LocalDate</a></code>
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html"
+                                                    title="class or interface in java.time" class="external-link">LocalDateTime</a></code>
                                         </div>
                                         <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-                                            <code><a href="#localDate(java.util.Date)" class="member-name-link">localDate</a>
+                                            <code><a
+                                                    href="#parseLocalDateTime(java.lang.String,java.time.format.DateTimeFormatter)"
+                                                    class="member-name-link">parseLocalDateTime</a>
                                                 <wbr>
-                                                (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                    title="class or interface in java.util"
-                                                    class="external-link">Date</a>&nbsp;a)</code></div>
+                                                (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                                    title="class or interface in java.lang"
+                                                    class="external-link">String</a>&nbsp;toParse,
+                                                <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html"
+                                                   title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&nbsp;format)</code>
+                                        </div>
                                         <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
                                             &nbsp;
                                         </div>
                                         <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
                                             <code>static <a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                    title="class or interface in java.util"
-                                                    class="external-link">Date</a></code></div>
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html"
+                                                    title="class or interface in java.time" class="external-link">LocalTime</a></code>
+                                        </div>
                                         <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-                                            <code><a href="#parse(java.lang.String,java.text.DateFormat)"
-                                                     class="member-name-link">parse</a>
+                                            <code><a
+                                                    href="#parseLocalTime(java.lang.String,java.time.format.DateTimeFormatter)"
+                                                    class="member-name-link">parseLocalTime</a>
                                                 <wbr>
                                                 (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">String</a>&nbsp;toParse,
-                                                <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/DateFormat.html"
-                                                   title="class or interface in java.text" class="external-link">DateFormat</a>&nbsp;format)</code>
+                                                <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html"
+                                                   title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&nbsp;format)</code>
                                         </div>
                                         <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
                                             &nbsp;
@@ -174,15 +184,14 @@ loadScripts(document, 'script');</script>
                                                     title="class or interface in java.time"
                                                     class="external-link">Period</a></code></div>
                                         <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-                                            <code><a href="#period(java.util.Date,java.util.Date)"
+                                            <code><a href="#period(java.time.LocalDate,java.time.LocalDate)"
                                                      class="member-name-link">period</a>
                                                 <wbr>
-                                                (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                    title="class or interface in java.util"
-                                                    class="external-link">Date</a>&nbsp;a,
-                                                <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                   title="class or interface in java.util"
-                                                   class="external-link">Date</a>&nbsp;b)</code></div>
+                                                (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                                    title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;a,
+                                                <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                                   title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;b)</code>
+                                        </div>
                                         <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
                                             &nbsp;
                                         </div>
@@ -229,7 +238,7 @@ loadScripts(document, 'script');</script>
                             <h2>Method Details</h2>
                             <ul class="member-list">
                                 <li>
-                                    <section class="detail" id="period(java.util.Date,java.util.Date)">
+                                    <section class="detail" id="period(java.time.LocalDate,java.time.LocalDate)">
                                         <h3>period</h3>
                                         <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
                                                 class="return-type"><a
@@ -238,60 +247,66 @@ loadScripts(document, 'script');</script>
                                                 class="element-name">period</span>
                                             <wbr>
                                             <span class="parameters">(<a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                    title="class or interface in java.util"
-                                                    class="external-link">Date</a>&nbsp;a,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-    title="class or interface in java.util" class="external-link">Date</a>&nbsp;b)</span></div>
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                                    title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;a,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+    title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;b)</span></div>
                                     </section>
                                 </li>
                                 <li>
-                                    <section class="detail" id="localDate(java.util.Date)">
-                                        <h3>localDate</h3>
+                                    <section class="detail"
+                                             id="parseLocalDate(java.lang.String,java.time.format.DateTimeFormatter)">
+                                        <h3>parseLocalDate</h3>
                                         <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
                                                 class="return-type"><a
                                                 href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
                                                 title="class or interface in java.time"
                                                 class="external-link">LocalDate</a></span>&nbsp;<span
-                                                class="element-name">localDate</span>
-                                            <wbr>
-                                            <span class="parameters">(<a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                    title="class or interface in java.util"
-                                                    class="external-link">Date</a>&nbsp;a)</span></div>
-                                    </section>
-                                </li>
-                                <li>
-                                    <section class="detail" id="format(java.lang.String)">
-                                        <h3>format</h3>
-                                        <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
-                                                class="return-type"><a
-                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/DateFormat.html"
-                                                title="class or interface in java.text"
-                                                class="external-link">DateFormat</a></span>&nbsp;<span
-                                                class="element-name">format</span>
-                                            <wbr>
-                                            <span class="parameters">(<a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                                                    title="class or interface in java.lang"
-                                                    class="external-link">String</a>&nbsp;format)</span></div>
-                                    </section>
-                                </li>
-                                <li>
-                                    <section class="detail" id="parse(java.lang.String,java.text.DateFormat)">
-                                        <h3>parse</h3>
-                                        <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
-                                                class="return-type"><a
-                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                title="class or interface in java.util"
-                                                class="external-link">Date</a></span>&nbsp;<span class="element-name">parse</span>
+                                                class="element-name">parseLocalDate</span>
                                             <wbr>
                                             <span class="parameters">(<a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">String</a>&nbsp;toParse,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/DateFormat.html"
-    title="class or interface in java.text" class="external-link">DateFormat</a>&nbsp;format)</span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html"
+    title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&nbsp;format)</span></div>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="detail"
+                                             id="parseLocalTime(java.lang.String,java.time.format.DateTimeFormatter)">
+                                        <h3>parseLocalTime</h3>
+                                        <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
+                                                class="return-type"><a
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html"
+                                                title="class or interface in java.time"
+                                                class="external-link">LocalTime</a></span>&nbsp;<span
+                                                class="element-name">parseLocalTime</span>
+                                            <wbr>
+                                            <span class="parameters">(<a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                                    title="class or interface in java.lang"
+                                                    class="external-link">String</a>&nbsp;toParse,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html"
+    title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&nbsp;format)</span></div>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="detail"
+                                             id="parseLocalDateTime(java.lang.String,java.time.format.DateTimeFormatter)">
+                                        <h3>parseLocalDateTime</h3>
+                                        <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
+                                                class="return-type"><a
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html"
+                                                title="class or interface in java.time" class="external-link">LocalDateTime</a></span>&nbsp;<span
+                                                class="element-name">parseLocalDateTime</span>
+                                            <wbr>
+                                            <span class="parameters">(<a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                                    title="class or interface in java.lang"
+                                                    class="external-link">String</a>&nbsp;toParse,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html"
+    title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&nbsp;format)</span></div>
                                     </section>
                                 </li>
                             </ul>

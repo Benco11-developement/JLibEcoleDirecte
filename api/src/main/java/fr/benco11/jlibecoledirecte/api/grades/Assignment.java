@@ -1,6 +1,6 @@
 package fr.benco11.jlibecoledirecte.api.grades;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public interface Assignment {
     long id();
@@ -19,7 +19,7 @@ public interface Assignment {
 
     String comment();
 
-    Date date();
+    LocalDate date();
 
     Mark mark();
 

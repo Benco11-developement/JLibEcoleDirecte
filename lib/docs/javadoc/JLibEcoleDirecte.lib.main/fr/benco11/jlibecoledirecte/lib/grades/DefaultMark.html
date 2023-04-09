@@ -92,9 +92,12 @@ loadScripts(document, 'script');</script>
                 <hr>
                 <div class="type-signature"><span class="modifiers">public record </span><span
                         class="element-name type-name-label">DefaultMark</span>(double&nbsp;coef, double&nbsp;outOf, <a
-                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                        title="class or interface in java.util" class="external-link">Date</a>&nbsp;entryDate, double&nbsp;user,
-                    double&nbsp;schoolClass, double&nbsp;schoolClassMin, double&nbsp;schoolClassMax, boolean&nbsp;isValueBased)
+                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+                        title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                        title="class or interface in java.time" class="external-link">LocalDate</a>&gt;&nbsp;entryDate,
+                    double&nbsp;user, double&nbsp;schoolClass, double&nbsp;schoolClassMin, double&nbsp;schoolClassMax,
+                    boolean&nbsp;isValueBased)
                     <span class="extends-implements">extends <a
                             href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html"
                             title="class or interface in java.lang" class="external-link">Record</a>
@@ -111,13 +114,15 @@ implements fr.benco11.jlibecoledirecte.api.grades.Mark</span></div>
                                 <div class="table-header col-first">Constructor</div>
                                 <div class="table-header col-last">Description</div>
                                 <div class="col-constructor-name even-row-color"><code><a
-                                        href="#%3Cinit%3E(double,double,java.util.Date,double,double,double,double,boolean)"
+                                        href="#%3Cinit%3E(double,double,java.util.Optional,double,double,double,double,boolean)"
                                         class="member-name-link">DefaultMark</a>
                                     <wbr>
                                     (double&nbsp;coef,
                                     double&nbsp;outOf,
-                                    <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                       title="class or interface in java.util" class="external-link">Date</a>&nbsp;entryDate,
+                                    <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+                                       title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                                            href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                            title="class or interface in java.time" class="external-link">LocalDate</a>&gt;&nbsp;entryDate,
                                     double&nbsp;user,
                                     double&nbsp;schoolClass,
                                     double&nbsp;schoolClassMin,
@@ -172,9 +177,11 @@ implements fr.benco11.jlibecoledirecte.api.grades.Mark</span></div>
                                         </div>
                                         <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-                                                    title="class or interface in java.util"
-                                                    class="external-link">Date</a></code></div>
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+                                                    title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                                    title="class or interface in java.time" class="external-link">LocalDate</a>&gt;</code>
+                                        </div>
                                         <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#entryDate()" class="member-name-link">entryDate</a>()</code>
                                         </div>
@@ -313,15 +320,17 @@ implements fr.benco11.jlibecoledirecte.api.grades.Mark</span></div>
                             <ul class="member-list">
                                 <li>
                                     <section class="detail"
-                                             id="&lt;init&gt;(double,double,java.util.Date,double,double,double,double,boolean)">
+                                             id="&lt;init&gt;(double,double,java.util.Optional,double,double,double,double,boolean)">
                                         <h3>DefaultMark</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="element-name">DefaultMark</span>
                                             <wbr>
                                             <span class="parameters">(double&nbsp;coef,
  double&nbsp;outOf,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
-    title="class or interface in java.util" class="external-link">Date</a>&nbsp;entryDate,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+    title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                                                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                                        title="class or interface in java.time" class="external-link">LocalDate</a>&gt;&nbsp;entryDate,
  double&nbsp;user,
  double&nbsp;schoolClass,
  double&nbsp;schoolClassMin,
@@ -494,9 +503,13 @@ implements fr.benco11.jlibecoledirecte.api.grades.Mark</span></div>
                                         <h3>entryDate</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="return-type"><a
-                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html"
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
                                                 title="class or interface in java.util"
-                                                class="external-link">Date</a></span>&nbsp;<span class="element-name">entryDate</span>()
+                                                class="external-link">Optional</a>&lt;<a
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html"
+                                                title="class or interface in java.time"
+                                                class="external-link">LocalDate</a>&gt;</span>&nbsp;<span
+                                                class="element-name">entryDate</span>()
                                         </div>
                                         <div class="block">Returns the value of the <code>entryDate</code> record
                                             component.

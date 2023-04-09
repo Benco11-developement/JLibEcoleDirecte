@@ -105,9 +105,13 @@ loadScripts(document, 'script');</script>
                             href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                             title="class or interface in java.lang" class="external-link">String</a>&nbsp;formTeacherComment,
                     <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                       title="class or interface in java.lang" class="external-link">String</a>&nbsp;decision, <a
-                            href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                            title="class or interface in java.lang" class="external-link">String</a>&nbsp;schoolClassComment,
+                       title="class or interface in java.lang" class="external-link">String</a>&nbsp;schoolClassComment,
+                    <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                       title="class or interface in java.lang" class="external-link">String</a>&nbsp;conferenceDecision,
+                    <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+                       title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                            href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html"
+                            title="class or interface in java.time" class="external-link">LocalDateTime</a>&gt;&nbsp;conferenceDate,
                     <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html"
                        title="class or interface in java.util" class="external-link">List</a>&lt;fr.benco11.jlibecoledirecte.api.grades.Discipline&gt;&nbsp;disciplines)
                     <span class="extends-implements">extends <a
@@ -126,7 +130,7 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                                 <div class="table-header col-first">Constructor</div>
                                 <div class="table-header col-last">Description</div>
                                 <div class="col-constructor-name even-row-color"><code><a
-                                        href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,boolean,java.time.Period,boolean,boolean,fr.benco11.jlibecoledirecte.api.grades.Mark,fr.benco11.jlibecoledirecte.api.grades.Teacher,java.lang.String,java.lang.String,java.lang.String,java.util.List)"
+                                        href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,boolean,java.time.Period,boolean,boolean,fr.benco11.jlibecoledirecte.api.grades.Mark,fr.benco11.jlibecoledirecte.api.grades.Teacher,java.lang.String,java.lang.String,java.lang.String,java.util.Optional,java.util.List)"
                                         class="member-name-link">DefaultPeriod</a>
                                     <wbr>
                                     (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
@@ -145,9 +149,14 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                                     <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                        title="class or interface in java.lang" class="external-link">String</a>&nbsp;formTeacherComment,
                                     <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                                       title="class or interface in java.lang" class="external-link">String</a>&nbsp;decision,
-                                    <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                        title="class or interface in java.lang" class="external-link">String</a>&nbsp;schoolClassComment,
+                                    <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                       title="class or interface in java.lang" class="external-link">String</a>&nbsp;conferenceDecision,
+                                    <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+                                       title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                                            href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html"
+                                            title="class or interface in java.time"
+                                            class="external-link">LocalDateTime</a>&gt;&nbsp;conferenceDate,
                                     <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html"
                                        title="class or interface in java.util" class="external-link">List</a>&lt;fr.benco11.jlibecoledirecte.api.grades.Discipline&gt;&nbsp;disciplines)</code>
                                 </div>
@@ -222,6 +231,34 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                                         </div>
                                         <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+                                                    title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html"
+                                                    title="class or interface in java.time" class="external-link">LocalDateTime</a>&gt;</code>
+                                        </div>
+                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <code><a href="#conferenceDate()"
+                                                     class="member-name-link">conferenceDate</a>()</code></div>
+                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <div class="block">Returns the value of the <code>conferenceDate</code>
+                                                record component.
+                                            </div>
+                                        </div>
+                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <code><a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                                    title="class or interface in java.lang"
+                                                    class="external-link">String</a></code></div>
+                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <code><a href="#conferenceDecision()" class="member-name-link">conferenceDecision</a>()</code>
+                                        </div>
+                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <div class="block">Returns the value of the <code>conferenceDecision</code>
+                                                record component.
+                                            </div>
+                                        </div>
+                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <code><a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html"
                                                     title="class or interface in java.time"
                                                     class="external-link">Period</a></code></div>
@@ -234,141 +271,128 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                                         </div>
                                         <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                                                    title="class or interface in java.lang"
-                                                    class="external-link">String</a></code></div>
-                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code><a href="#decision()" class="member-name-link">decision</a>()</code>
-                                        </div>
-                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <div class="block">Returns the value of the <code>decision</code> record
-                                                component.
-                                            </div>
-                                        </div>
-                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code><a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html"
                                                     title="class or interface in java.util"
                                                     class="external-link">List</a>&lt;fr.benco11.jlibecoledirecte.api.grades.Discipline&gt;</code>
                                         </div>
-                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#disciplines()"
                                                      class="member-name-link">disciplines</a>()</code></div>
-                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns the value of the <code>disciplines</code> record
                                                 component.
                                             </div>
                                         </div>
-                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code>boolean</code></div>
-                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#ended()" class="member-name-link">ended</a>()</code></div>
-                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns the value of the <code>ended</code> record
                                                 component.
                                             </div>
                                         </div>
-                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code>final boolean</code></div>
-                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#equals(java.lang.Object)"
                                                      class="member-name-link">equals</a>
                                                 <wbr>
                                                 (<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">Object</a>&nbsp;o)</code></div>
-                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Indicates whether some other object is "equal to" this
                                                 one.
                                             </div>
                                         </div>
-                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code>fr.benco11.jlibecoledirecte.api.grades.Teacher</code></div>
-                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#formTeacher()"
                                                      class="member-name-link">formTeacher</a>()</code></div>
-                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns the value of the <code>formTeacher</code> record
                                                 component.
                                             </div>
                                         </div>
-                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">String</a></code></div>
-                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#formTeacherComment()" class="member-name-link">formTeacherComment</a>()</code>
                                         </div>
-                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns the value of the <code>formTeacherComment</code>
                                                 record component.
                                             </div>
                                         </div>
-                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code>final int</code></div>
-                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code>
                                         </div>
-                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns a hash code value for this object.</div>
                                         </div>
-                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">String</a></code></div>
-                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#id()" class="member-name-link">id</a>()</code></div>
-                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns the value of the <code>id</code> record
                                                 component.
                                             </div>
                                         </div>
-                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code>boolean</code></div>
-                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#mockExam()" class="member-name-link">mockExam</a>()</code>
                                         </div>
-                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns the value of the <code>mockExam</code> record
                                                 component.
                                             </div>
                                         </div>
-                                        <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code><a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                                                    title="class or interface in java.lang"
-                                                    class="external-link">String</a></code></div>
-                                        <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code><a href="#name()" class="member-name-link">name</a>()</code></div>
-                                        <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <div class="block">Returns the value of the <code>name</code> record
-                                                component.
-                                            </div>
-                                        </div>
                                         <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">String</a></code></div>
                                         <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code><a href="#schoolClassComment()" class="member-name-link">schoolClassComment</a>()</code>
-                                        </div>
+                                            <code><a href="#name()" class="member-name-link">name</a>()</code></div>
                                         <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <div class="block">Returns the value of the <code>schoolClassComment</code>
-                                                record component.
+                                            <div class="block">Returns the value of the <code>name</code> record
+                                                component.
                                             </div>
                                         </div>
                                         <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code>final <a
+                                            <code><a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">String</a></code></div>
                                         <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code><a href="#toString()" class="member-name-link">toString</a>()</code>
+                                            <code><a href="#schoolClassComment()" class="member-name-link">schoolClassComment</a>()</code>
                                         </div>
                                         <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <div class="block">Returns the value of the <code>schoolClassComment</code>
+                                                record component.
+                                            </div>
+                                        </div>
+                                        <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <code>final <a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                                    title="class or interface in java.lang"
+                                                    class="external-link">String</a></code></div>
+                                        <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+                                            <code><a href="#toString()" class="member-name-link">toString</a>()</code>
+                                        </div>
+                                        <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <div class="block">Returns a string representation of this record class.
                                             </div>
                                         </div>
@@ -410,7 +434,7 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                             <ul class="member-list">
                                 <li>
                                     <section class="detail"
-                                             id="&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,boolean,java.time.Period,boolean,boolean,fr.benco11.jlibecoledirecte.api.grades.Mark,fr.benco11.jlibecoledirecte.api.grades.Teacher,java.lang.String,java.lang.String,java.lang.String,java.util.List)">
+                                             id="&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,boolean,java.time.Period,boolean,boolean,fr.benco11.jlibecoledirecte.api.grades.Mark,fr.benco11.jlibecoledirecte.api.grades.Teacher,java.lang.String,java.lang.String,java.lang.String,java.util.Optional,java.util.List)">
                                         <h3>DefaultPeriod</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="element-name">DefaultPeriod</span>
@@ -433,9 +457,13 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
     title="class or interface in java.lang" class="external-link">String</a>&nbsp;formTeacherComment,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-    title="class or interface in java.lang" class="external-link">String</a>&nbsp;decision,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
     title="class or interface in java.lang" class="external-link">String</a>&nbsp;schoolClassComment,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+    title="class or interface in java.lang" class="external-link">String</a>&nbsp;conferenceDecision,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+    title="class or interface in java.util" class="external-link">Optional</a>&lt;<a
+                                                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html"
+                                                        title="class or interface in java.time" class="external-link">LocalDateTime</a>&gt;&nbsp;conferenceDate,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html"
     title="class or interface in java.util" class="external-link">List</a>&lt;fr.benco11.jlibecoledirecte.api.grades.Discipline&gt;&nbsp;disciplines)</span>
                                         </div>
@@ -470,11 +498,14 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                                             <dd><code>formTeacherComment</code> - the value for the <code>formTeacherComment</code>
                                                 record component
                                             </dd>
-                                            <dd><code>decision</code> - the value for the <code>decision</code> record
-                                                component
-                                            </dd>
                                             <dd><code>schoolClassComment</code> - the value for the <code>schoolClassComment</code>
                                                 record component
+                                            </dd>
+                                            <dd><code>conferenceDecision</code> - the value for the <code>conferenceDecision</code>
+                                                record component
+                                            </dd>
+                                            <dd><code>conferenceDate</code> - the value for the
+                                                <code>conferenceDate</code> record component
                                             </dd>
                                             <dd><code>disciplines</code> - the value for the <code>disciplines</code>
                                                 record component
@@ -772,27 +803,6 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                                     </section>
                                 </li>
                                 <li>
-                                    <section class="detail" id="decision()">
-                                        <h3>decision</h3>
-                                        <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
-                                                class="return-type"><a
-                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                                                title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span
-                                                class="element-name">decision</span>()
-                                        </div>
-                                        <div class="block">Returns the value of the <code>decision</code> record
-                                            component.
-                                        </div>
-                                        <dl class="notes">
-                                            <dt>Specified by:</dt>
-                                            <dd><code>decision</code>&nbsp;in interface&nbsp;<code>fr.benco11.jlibecoledirecte.api.grades.Period</code>
-                                            </dd>
-                                            <dt>Returns:</dt>
-                                            <dd>the value of the <code>decision</code> record component</dd>
-                                        </dl>
-                                    </section>
-                                </li>
-                                <li>
                                     <section class="detail" id="schoolClassComment()">
                                         <h3>schoolClassComment</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
@@ -810,6 +820,51 @@ implements fr.benco11.jlibecoledirecte.api.grades.Period</span></div>
                                             </dd>
                                             <dt>Returns:</dt>
                                             <dd>the value of the <code>schoolClassComment</code> record component</dd>
+                                        </dl>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="detail" id="conferenceDecision()">
+                                        <h3>conferenceDecision</h3>
+                                        <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
+                                                class="return-type"><a
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                                title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span
+                                                class="element-name">conferenceDecision</span>()
+                                        </div>
+                                        <div class="block">Returns the value of the <code>conferenceDecision</code>
+                                            record component.
+                                        </div>
+                                        <dl class="notes">
+                                            <dt>Specified by:</dt>
+                                            <dd><code>conferenceDecision</code>&nbsp;in interface&nbsp;<code>fr.benco11.jlibecoledirecte.api.grades.Period</code>
+                                            </dd>
+                                            <dt>Returns:</dt>
+                                            <dd>the value of the <code>conferenceDecision</code> record component</dd>
+                                        </dl>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="detail" id="conferenceDate()">
+                                        <h3>conferenceDate</h3>
+                                        <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
+                                                class="return-type"><a
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"
+                                                title="class or interface in java.util"
+                                                class="external-link">Optional</a>&lt;<a
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html"
+                                                title="class or interface in java.time" class="external-link">LocalDateTime</a>&gt;</span>&nbsp;<span
+                                                class="element-name">conferenceDate</span>()
+                                        </div>
+                                        <div class="block">Returns the value of the <code>conferenceDate</code> record
+                                            component.
+                                        </div>
+                                        <dl class="notes">
+                                            <dt>Specified by:</dt>
+                                            <dd><code>conferenceDate</code>&nbsp;in interface&nbsp;<code>fr.benco11.jlibecoledirecte.api.grades.Period</code>
+                                            </dd>
+                                            <dt>Returns:</dt>
+                                            <dd>the value of the <code>conferenceDate</code> record component</dd>
                                         </dl>
                                     </section>
                                 </li>

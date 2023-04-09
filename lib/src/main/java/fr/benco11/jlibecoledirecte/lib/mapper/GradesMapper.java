@@ -26,7 +26,6 @@ public interface GradesMapper {
         return periodsDTO.stream().map(p -> (Period) periodDTOToPeriod(p, assignmentsPerPeriod.getOrDefault(p.codePeriode(), List.of()))).toList();
     }
 
-    // TODO date du conseil
     @Mapping(target = "id", source = "periodDTO.idPeriode")
     @Mapping(target = "code", source = "periodDTO.codePeriode")
     @Mapping(target = "name", source = "periodDTO.periode")
@@ -37,14 +36,15 @@ public interface GradesMapper {
     @Mapping(target = "average", source = "periodDTO.ensembleMatieres")
     @Mapping(target = "formTeacher", source = "periodDTO.ensembleMatieres")
     @Mapping(target = "formTeacherComment", source = "periodDTO.ensembleMatieres.appreciationPP")
-    @Mapping(target = "decision", source = "periodDTO.ensembleMatieres.decisionDuConseil")
     @Mapping(target = "schoolClassComment", source = "periodDTO.ensembleMatieres.appreciationGeneraleClasse")
+    @Mapping(target = "conferenceDecision", source = "periodDTO.ensembleMatieres.decisionDuConseil")
+    @Mapping(target = "conferenceDate", expression = "java(Optional.ofNullable(periodDTO.dateConseil()).map(a -> a.atTime(periodDTO.heureConseil())))")
     @Mapping(target = "disciplines", expression = "java(periodDTO.ensembleMatieres().disciplines().stream().map(d -> (Discipline) disciplineDTOToDiscipline(d, assignmentsDTO)).toList())")
     DefaultPeriod periodDTOToPeriod(PeriodDTO periodDTO, List<AssignmentDTO> assignmentsDTO);
 
     @Mapping(target = "coef", constant = "1")
     @Mapping(target = "outOf", constant = "20")
-    @Mapping(target = "entryDate", source = "dateCalcul")
+    @Mapping(target = "entryDate", expression = "java(Optional.ofNullable(disciplineSetDTO.dateCalcul()).map(d -> d.toLocalDate()))")
     @Mapping(target = "user", source = "moyenneGenerale")
     @Mapping(target = "schoolClass", source = "moyenneClasse")
     @Mapping(target = "schoolClassMin", source = "moyenneMin")
@@ -74,7 +74,7 @@ public interface GradesMapper {
                                                 List<AssignmentDTO> assignmentsDTO);
 
     @Mapping(target = "outOf", constant = "20")
-    @Mapping(target = "entryDate", ignore = true)
+    @Mapping(target = "entryDate", expression = "java(Optional.empty())")
     @Mapping(target = "user", source = "moyenne")
     @Mapping(target = "schoolClass", source = "moyenneClasse")
     @Mapping(target = "schoolClassMin", source = "moyenneMin")
@@ -100,7 +100,7 @@ public interface GradesMapper {
     DefaultAssignment assignmentDTOToAssignment(AssignmentDTO assignmentDTO);
 
     @Mapping(target = "outOf", source = "noteSur")
-    @Mapping(target = "entryDate", source = "dateSaisie")
+    @Mapping(target = "entryDate", expression = "java(Optional.of(assignmentDTO.dateSaisie()))")
     @Mapping(target = "user", source = "valeur")
     @Mapping(target = "schoolClass", source = "moyenneClasse")
     @Mapping(target = "schoolClassMin", source = "minClasse")

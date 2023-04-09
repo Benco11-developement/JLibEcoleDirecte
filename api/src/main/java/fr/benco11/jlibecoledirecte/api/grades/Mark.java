@@ -1,13 +1,14 @@
 package fr.benco11.jlibecoledirecte.api.grades;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Optional;
 
 public interface Mark {
     double coef();
 
     double outOf();
 
-    Date entryDate();
+    Optional<LocalDate> entryDate();
 
     double user();
 

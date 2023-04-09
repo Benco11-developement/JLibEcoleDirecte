@@ -4,13 +4,19 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import fr.benco11.jlibecoledirecte.lib.adapter.DateDeserializer;
 import fr.benco11.jlibecoledirecte.lib.adapter.DoubleDeserializer;
+import fr.benco11.jlibecoledirecte.lib.adapter.LocalDateDeserializer;
+import fr.benco11.jlibecoledirecte.lib.adapter.LocalDateTimeDeserializer;
+import fr.benco11.jlibecoledirecte.lib.adapter.LocalTimeDeserializer;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class JsonUtils {
-    public static final Gson GSON = new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializer())
+    public static final Gson GSON = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
+            .registerTypeAdapter(LocalDate.class, new LocalDateDeserializer())
+            .registerTypeAdapter(LocalTime.class, new LocalTimeDeserializer())
             .registerTypeAdapter(Double.class, new DoubleDeserializer())
             .create();
 

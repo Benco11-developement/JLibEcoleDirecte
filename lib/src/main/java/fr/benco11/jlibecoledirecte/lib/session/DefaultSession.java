@@ -6,16 +6,16 @@ import fr.benco11.jlibecoledirecte.api.session.SessionContext;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class DefaultSession implements Session {
 
     private final SessionContext sessionContext;
     private final Instant endSession;
-    private final Date lastLogin;
+    private final LocalDateTime lastLogin;
     private final Account account;
 
-    public DefaultSession(SessionContext sessionContext, Duration sessionValidity, Date lastLogin,
+    public DefaultSession(SessionContext sessionContext, Duration sessionValidity, LocalDateTime lastLogin,
                           Account account) {
         this.sessionContext = sessionContext;
         this.endSession = Instant.now()
@@ -29,7 +29,7 @@ public class DefaultSession implements Session {
     }
 
     @Override
-    public Date lastLogin() {
+    public LocalDateTime lastLogin() {
         return lastLogin;
     }
 

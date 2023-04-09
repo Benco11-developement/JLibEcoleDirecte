@@ -1,6 +1,8 @@
 package fr.benco11.jlibecoledirecte.api.grades;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface Period {
     String id();
@@ -23,9 +25,11 @@ public interface Period {
 
     String formTeacherComment();
 
-    String decision();
-
     String schoolClassComment();
+
+    String conferenceDecision();
+
+    Optional<LocalDateTime> conferenceDate();
 
     List<Discipline> disciplines();
 }

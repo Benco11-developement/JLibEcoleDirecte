@@ -185,7 +185,7 @@ loadScripts(document, 'script');</script>
                                             </div>
                                         </div>
                                         <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code>final boolean</code></div>
+                                            <code>boolean</code></div>
                                         <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#equals(java.lang.Object)"
                                                      class="member-name-link">equals</a>
@@ -199,7 +199,7 @@ loadScripts(document, 'script');</script>
                                             </div>
                                         </div>
                                         <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code>final int</code></div>
+                                            <code>int</code></div>
                                         <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
                                             <code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code>
                                         </div>
@@ -207,7 +207,7 @@ loadScripts(document, 'script');</script>
                                             <div class="block">Returns a hash code value for this object.</div>
                                         </div>
                                         <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-                                            <code>final <a
+                                            <code><a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
                                                     title="class or interface in java.lang"
                                                     class="external-link">String</a></code></div>
@@ -298,63 +298,10 @@ loadScripts(document, 'script');</script>
                             <h2>Method Details</h2>
                             <ul class="member-list">
                                 <li>
-                                    <section class="detail" id="toString()">
-                                        <h3>toString</h3>
-                                        <div class="member-signature"><span
-                                                class="modifiers">public final</span>&nbsp;<span class="return-type"><a
-                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
-                                                title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span
-                                                class="element-name">toString</span>()
-                                        </div>
-                                        <div class="block">Returns a string representation of this record class. The
-                                            representation contains the name of the class, followed by the name and
-                                            value of each of the record components.
-                                        </div>
-                                        <dl class="notes">
-                                            <dt>Specified by:</dt>
-                                            <dd><code><a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html#toString()"
-                                                    title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in
-                                                class&nbsp;<code><a
-                                                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html"
-                                                        title="class or interface in java.lang" class="external-link">Record</a></code>
-                                            </dd>
-                                            <dt>Returns:</dt>
-                                            <dd>a string representation of this object</dd>
-                                        </dl>
-                                    </section>
-                                </li>
-                                <li>
-                                    <section class="detail" id="hashCode()">
-                                        <h3>hashCode</h3>
-                                        <div class="member-signature"><span
-                                                class="modifiers">public final</span>&nbsp;<span
-                                                class="return-type">int</span>&nbsp;<span
-                                                class="element-name">hashCode</span>()
-                                        </div>
-                                        <div class="block">Returns a hash code value for this object. The value is
-                                            derived from the hash code of each of the record components.
-                                        </div>
-                                        <dl class="notes">
-                                            <dt>Specified by:</dt>
-                                            <dd><code><a
-                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html#hashCode()"
-                                                    title="class or interface in java.lang" class="external-link">hashCode</a></code>&nbsp;in
-                                                class&nbsp;<code><a
-                                                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html"
-                                                        title="class or interface in java.lang" class="external-link">Record</a></code>
-                                            </dd>
-                                            <dt>Returns:</dt>
-                                            <dd>a hash code value for this object</dd>
-                                        </dl>
-                                    </section>
-                                </li>
-                                <li>
                                     <section class="detail" id="equals(java.lang.Object)">
                                         <h3>equals</h3>
-                                        <div class="member-signature"><span
-                                                class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span
-                                                class="element-name">equals</span>
+                                        <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
+                                                class="return-type">boolean</span>&nbsp;<span class="element-name">equals</span>
                                             <wbr>
                                             <span class="parameters">(<a
                                                     href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html"
@@ -382,6 +329,57 @@ loadScripts(document, 'script');</script>
                                             <dd><code>true</code> if this object is the same as the <code>o</code>
                                                 argument; <code>false</code> otherwise.
                                             </dd>
+                                        </dl>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="detail" id="hashCode()">
+                                        <h3>hashCode</h3>
+                                        <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
+                                                class="return-type">int</span>&nbsp;<span
+                                                class="element-name">hashCode</span>()
+                                        </div>
+                                        <div class="block">Returns a hash code value for this object. The value is
+                                            derived from the hash code of each of the record components.
+                                        </div>
+                                        <dl class="notes">
+                                            <dt>Specified by:</dt>
+                                            <dd><code><a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html#hashCode()"
+                                                    title="class or interface in java.lang" class="external-link">hashCode</a></code>&nbsp;in
+                                                class&nbsp;<code><a
+                                                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html"
+                                                        title="class or interface in java.lang" class="external-link">Record</a></code>
+                                            </dd>
+                                            <dt>Returns:</dt>
+                                            <dd>a hash code value for this object</dd>
+                                        </dl>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="detail" id="toString()">
+                                        <h3>toString</h3>
+                                        <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
+                                                class="return-type"><a
+                                                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html"
+                                                title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span
+                                                class="element-name">toString</span>()
+                                        </div>
+                                        <div class="block">Returns a string representation of this record class. The
+                                            representation contains the name of the class, followed by the name and
+                                            value of each of the record components.
+                                        </div>
+                                        <dl class="notes">
+                                            <dt>Specified by:</dt>
+                                            <dd><code><a
+                                                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html#toString()"
+                                                    title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in
+                                                class&nbsp;<code><a
+                                                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html"
+                                                        title="class or interface in java.lang" class="external-link">Record</a></code>
+                                            </dd>
+                                            <dt>Returns:</dt>
+                                            <dd>a string representation of this object</dd>
                                         </dl>
                                     </section>
                                 </li>

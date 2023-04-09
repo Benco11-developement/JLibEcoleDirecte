@@ -1,9 +1,10 @@
 package fr.benco11.jlibecoledirecte.lib.dto.output.grades;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-public record PeriodDTO(String idPeriode, String codePeriode, String periode, Date dateDebut,
-                        Date dateFin, boolean annuel, boolean cloture, boolean examenBlanc,
-                        Date dateConseil, String heureConseil,
+public record PeriodDTO(String idPeriode, String codePeriode, String periode, LocalDate dateDebut,
+                        LocalDate dateFin, boolean annuel, boolean cloture, boolean examenBlanc,
+                        LocalDate dateConseil, LocalTime heureConseil,
                         DisciplineSetDTO ensembleMatieres) {
 }
