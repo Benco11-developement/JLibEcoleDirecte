@@ -5,9 +5,9 @@ import fr.benco11.jlibecoledirecte.api.account.*;
 import fr.benco11.jlibecoledirecte.api.exception.GradesFetchEcoleDirecteException;
 import fr.benco11.jlibecoledirecte.api.grades.Period;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
-import fr.benco11.jlibecoledirecte.lib.dto.output.grades.AssignmentDTO;
-import fr.benco11.jlibecoledirecte.lib.dto.output.grades.PeriodDTO;
-import fr.benco11.jlibecoledirecte.lib.mapper.GradesMapper;
+import fr.benco11.jlibecoledirecte.lib.grades.dto.AssignmentDTO;
+import fr.benco11.jlibecoledirecte.lib.grades.dto.PeriodDTO;
+import fr.benco11.jlibecoledirecte.lib.grades.GradesMapper;
 import fr.benco11.jlibecoledirecte.lib.utils.HttpUtils;
 import fr.benco11.jlibecoledirecte.lib.utils.JsonUtils;
 

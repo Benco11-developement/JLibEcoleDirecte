@@ -6,11 +6,11 @@ import fr.benco11.jlibecoledirecte.api.session.Session;
 import fr.benco11.jlibecoledirecte.api.session.SessionBuilder;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
 import fr.benco11.jlibecoledirecte.lib.account.AccountImplementation;
-import fr.benco11.jlibecoledirecte.lib.dto.input.LoginDTO;
-import fr.benco11.jlibecoledirecte.lib.dto.output.login.AccountDTO;
-import fr.benco11.jlibecoledirecte.lib.dto.output.login.SettingsDTO;
-import fr.benco11.jlibecoledirecte.lib.factory.AccountFactory;
-import fr.benco11.jlibecoledirecte.lib.mapper.AccountMapper;
+import fr.benco11.jlibecoledirecte.lib.account.dto.LoginDTOInput;
+import fr.benco11.jlibecoledirecte.lib.account.dto.AccountDTO;
+import fr.benco11.jlibecoledirecte.lib.account.dto.SettingsDTO;
+import fr.benco11.jlibecoledirecte.lib.account.factory.AccountFactory;
+import fr.benco11.jlibecoledirecte.lib.account.AccountMapper;
 import fr.benco11.jlibecoledirecte.lib.session.DefaultSession;
 import fr.benco11.jlibecoledirecte.lib.session.DefaultSessionContext;
 import fr.benco11.jlibecoledirecte.lib.utils.HttpUtils;
@@ -53,8 +53,8 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
 
     @Override
     public Session login() throws URISyntaxException, IOException, InterruptedException, LoginEcoleDirecteException {
-        LoginDTO loginDTO = new LoginDTO(username, password);
-        JsonObject loginResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.LOGIN.asString(), JsonUtils.serialize(loginDTO), new LoginEcoleDirecteException()));
+        LoginDTOInput loginDTOInput = new LoginDTOInput(username, password);
+        JsonObject loginResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.LOGIN.asString(), JsonUtils.serialize(loginDTOInput), new LoginEcoleDirecteException()));
         if (!loginResult.has("token")) throw new LoginEcoleDirecteException(loginResult.get("code")
                 .getAsInt(), loginResult.get("message")
                 .getAsString());
