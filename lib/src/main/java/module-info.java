@@ -6,6 +6,8 @@ module JLibEcoleDirecte.lib.main {
 
 
     exports fr.benco11.jlibecoledirecte.lib;
+    exports fr.benco11.jlibecoledirecte.lib.schoollife;
+    exports fr.benco11.jlibecoledirecte.lib.schoollife.dto;
     exports fr.benco11.jlibecoledirecte.lib.exception.runtime;
     exports fr.benco11.jlibecoledirecte.lib.utils;
     exports fr.benco11.jlibecoledirecte.lib.account;

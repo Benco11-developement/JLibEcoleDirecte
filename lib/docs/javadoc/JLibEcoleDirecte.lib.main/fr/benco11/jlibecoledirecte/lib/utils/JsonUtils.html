@@ -104,23 +104,90 @@ loadScripts(document, 'script');</script>
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
-<div class="table-header col-first">Modifier and Type</div>
-<div class="table-header col-second">Method</div>
-<div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;T</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#deserialize(com.google.gson.JsonElement,java.lang.Class)" class="member-name-link">deserialize</a><wbr>(com.google.gson.JsonElement&nbsp;json,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;tClass)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static com.google.gson.JsonObject</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#deserialize(java.lang.String)" class="member-name-link">deserialize</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;json)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;T</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#deserialize(java.lang.String,java.lang.Class)" class="member-name-link">deserialize</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;json,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;tClass)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#serialize(java.lang.Object)" class="member-name-link">serialize</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+    <div class="table-header col-first">Modifier and Type</div>
+    <div class="table-header col-second">Method</div>
+    <div class="table-header col-last">Description</div>
+    <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code>static com.google.gson.JsonObject</code></div>
+    <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code><a class="member-name-link" href="#data(java.lang.String)">data</a>
+            <wbr>
+            (<a class="external-link"
+                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a>&nbsp;json)</code></div>
+    <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        &nbsp;
+    </div>
+    <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static
+        &lt;T&gt;&nbsp;T</code></div>
+    <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code><a class="member-name-link"
+                 href="#deserialize(com.google.gson.JsonElement,java.lang.Class)">deserialize</a>
+            <wbr>
+            (com.google.gson.JsonElement&nbsp;json,
+            <a class="external-link"
+               href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;tClass)</code>
+    </div>
+    <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        &nbsp;
+    </div>
+    <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code>static &lt;T&gt;&nbsp;T</code></div>
+    <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code><a class="member-name-link" href="#deserialize(com.google.gson.JsonElement,java.lang.reflect.Type)">deserialize</a>
+            <wbr>
+            (com.google.gson.JsonElement&nbsp;json,
+            <a class="external-link"
+               href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Type.html" title="class or interface in java.lang.reflect">Type</a>&nbsp;type)</code></div>
+    <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        &nbsp;
+    </div>
+    <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static
+        com.google.gson.JsonObject</code></div>
+    <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code><a class="member-name-link" href="#deserialize(java.lang.String)">deserialize</a>
+            <wbr>
+            (<a class="external-link"
+                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a>&nbsp;json)</code></div>
+    <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        &nbsp;
+    </div>
+    <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code>static &lt;T&gt;&nbsp;T</code></div>
+    <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code><a class="member-name-link" href="#deserialize(java.lang.String,java.lang.Class)">deserialize</a>
+            <wbr>
+            (<a class="external-link"
+                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a>&nbsp;json,
+            <a class="external-link"
+               href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;tClass)</code>
+    </div>
+    <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        &nbsp;
+    </div>
+    <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static
+        &lt;T&gt;&nbsp;<a class="external-link"
+                          href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util">List</a>&lt;T&gt;</code></div>
+    <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code><a class="member-name-link" href="#deserializeList(com.google.gson.JsonElement,java.lang.Class)">deserializeList</a>
+            <wbr>
+            (com.google.gson.JsonElement&nbsp;json,
+            <a class="external-link"
+               href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang">Class</a>&lt;T[]&gt;&nbsp;tClass)</code>
+    </div>
+    <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        &nbsp;
+    </div>
+    <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code>static <a class="external-link"
+                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a></code></div>
+    <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        <code><a class="member-name-link" href="#serialize(java.lang.Object)">serialize</a>
+            <wbr>
+            (<a class="external-link"
+                href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang">Object</a>&nbsp;o)</code></div>
+    <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+        &nbsp;
+    </div>
 </div>
 </div>
 </div>
@@ -139,11 +206,11 @@ loadScripts(document, 'script');</script>
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="GSON">
-    <h3>GSON</h3>
-    <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">com.google.gson.Gson</span>&nbsp;<span
-            class="element-name">GSON</span></div>
-</section>
+    <section class="detail" id="GSON">
+        <h3>GSON</h3>
+        <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">com.google.gson.Gson</span>&nbsp;<span
+                class="element-name">GSON</span></div>
+    </section>
 </li>
 </ul>
 </section>
@@ -153,32 +220,93 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
-<li>
-<section class="detail" id="serialize(java.lang.Object)">
-<h3>serialize</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">serialize</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="deserialize(java.lang.String)">
-<h3>deserialize</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">com.google.gson.JsonObject</span>&nbsp;<span class="element-name">deserialize</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;json)</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="deserialize(com.google.gson.JsonElement,java.lang.Class)">
-<h3>deserialize</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">deserialize</span><wbr><span class="parameters">(com.google.gson.JsonElement&nbsp;json,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;tClass)</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="deserialize(java.lang.String,java.lang.Class)">
-<h3>deserialize</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">deserialize</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;json,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;tClass)</span></div>
-</section>
-</li>
+    <li>
+        <section class="detail" id="serialize(java.lang.Object)">
+            <h3>serialize</h3>
+            <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a
+                    class="external-link"
+                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a></span>&nbsp;<span
+                    class="element-name">serialize</span>
+                <wbr>
+                <span class="parameters">(<a
+                        class="external-link"
+                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang">Object</a>&nbsp;o)</span></div>
+        </section>
+    </li>
+    <li>
+        <section class="detail" id="deserialize(java.lang.String)">
+            <h3>deserialize</h3>
+            <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">com.google.gson.JsonObject</span>&nbsp;<span
+                    class="element-name">deserialize</span>
+                <wbr>
+                <span class="parameters">(<a
+                        class="external-link"
+                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a>&nbsp;json)</span></div>
+        </section>
+    </li>
+    <li>
+        <section class="detail" id="deserialize(com.google.gson.JsonElement,java.lang.reflect.Type)">
+            <h3>deserialize</h3>
+            <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
+                    class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span
+                    class="element-name">deserialize</span>
+                <wbr>
+                <span class="parameters">(com.google.gson.JsonElement&nbsp;json,
+ <a class="external-link"
+    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Type.html" title="class or interface in java.lang.reflect">Type</a>&nbsp;type)</span></div>
+        </section>
+    </li>
+    <li>
+        <section class="detail" id="deserialize(com.google.gson.JsonElement,java.lang.Class)">
+            <h3>deserialize</h3>
+            <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
+                    class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span
+                    class="element-name">deserialize</span>
+                <wbr>
+                <span class="parameters">(com.google.gson.JsonElement&nbsp;json,
+ <a class="external-link"
+    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;tClass)</span></div>
+        </section>
+    </li>
+    <li>
+        <section class="detail" id="deserialize(java.lang.String,java.lang.Class)">
+            <h3>deserialize</h3>
+            <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
+                    class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span
+                    class="element-name">deserialize</span>
+                <wbr>
+                <span class="parameters">(<a
+                        class="external-link"
+                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a>&nbsp;json,
+ <a class="external-link"
+    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;tClass)</span></div>
+        </section>
+    </li>
+    <li>
+        <section class="detail" id="deserializeList(com.google.gson.JsonElement,java.lang.Class)">
+            <h3>deserializeList</h3>
+            <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span
+                    class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a
+                    class="external-link"
+                    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util">List</a>&lt;T&gt;</span>&nbsp;<span
+                    class="element-name">deserializeList</span>
+                <wbr>
+                <span class="parameters">(com.google.gson.JsonElement&nbsp;json,
+ <a class="external-link"
+    href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang">Class</a>&lt;T[]&gt;&nbsp;tClass)</span></div>
+        </section>
+    </li>
+    <li>
+        <section class="detail" id="data(java.lang.String)">
+            <h3>data</h3>
+            <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">com.google.gson.JsonObject</span>&nbsp;<span
+                    class="element-name">data</span>
+                <wbr>
+                <span class="parameters">(<a
+                        class="external-link"
+                        href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang">String</a>&nbsp;json)</span></div>
+        </section>
+    </li>
 </ul>
 </section>
 </li>

@@ -7,5 +7,7 @@ fr.benco11.jlibecoledirecte.lib.adapter
 fr.benco11.jlibecoledirecte.lib.exception.runtime
 fr.benco11.jlibecoledirecte.lib.grades
 fr.benco11.jlibecoledirecte.lib.grades.dto
+fr.benco11.jlibecoledirecte.lib.schoollife
+fr.benco11.jlibecoledirecte.lib.schoollife.dto
 fr.benco11.jlibecoledirecte.lib.session
 fr.benco11.jlibecoledirecte.lib.utils

@@ -9,9 +9,12 @@ import fr.benco11.jlibecoledirecte.lib.adapter.LocalDateDeserializer;
 import fr.benco11.jlibecoledirecte.lib.adapter.LocalDateTimeDeserializer;
 import fr.benco11.jlibecoledirecte.lib.adapter.LocalTimeDeserializer;
 
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.List;
 
 public class JsonUtils {
     public static final Gson GSON = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
@@ -31,11 +34,23 @@ public class JsonUtils {
         return deserialize(json, JsonObject.class);
     }
 
+    public static <T> T deserialize(JsonElement json, Type type) {
+        return GSON.fromJson(json, type);
+    }
+
     public static <T> T deserialize(JsonElement json, Class<T> tClass) {
         return GSON.fromJson(json, tClass);
     }
 
     public static <T> T deserialize(String json, Class<T> tClass) {
         return GSON.fromJson(json, tClass);
+    }
+
+    public static <T> List<T> deserializeList(JsonElement json, Class<T[]> tClass) {
+        return Arrays.asList(deserialize(json, tClass));
+    }
+
+    public static JsonObject data(String json) {
+        return deserialize(json).getAsJsonObject("data");
     }
 }

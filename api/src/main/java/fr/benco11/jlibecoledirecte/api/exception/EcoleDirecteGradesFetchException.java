@@ -1,11 +1,11 @@
 package fr.benco11.jlibecoledirecte.api.exception;
 
-public class GradesFetchEcoleDirecteException extends EcoleDirecteException {
-    public GradesFetchEcoleDirecteException(int code, String message) {
+public class EcoleDirecteGradesFetchException extends EcoleDirecteException {
+    public EcoleDirecteGradesFetchException(int code, String message) {
         super(code, message);
     }
 
-    public GradesFetchEcoleDirecteException() {
+    public EcoleDirecteGradesFetchException() {
         super();
     }
 

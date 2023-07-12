@@ -1,7 +1,7 @@
 package fr.benco11.jlibecoledirecte.lib;
 
 import com.google.gson.JsonObject;
-import fr.benco11.jlibecoledirecte.api.exception.LoginEcoleDirecteException;
+import fr.benco11.jlibecoledirecte.api.exception.EcoleDirecteLoginException;
 import fr.benco11.jlibecoledirecte.api.session.Session;
 import fr.benco11.jlibecoledirecte.api.session.SessionBuilder;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
@@ -52,10 +52,10 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
     }
 
     @Override
-    public Session login() throws URISyntaxException, IOException, InterruptedException, LoginEcoleDirecteException {
+    public Session login() throws URISyntaxException, IOException, InterruptedException, EcoleDirecteLoginException {
         LoginDTOInput loginDTOInput = new LoginDTOInput(username, password);
-        JsonObject loginResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.LOGIN.asString(), JsonUtils.serialize(loginDTOInput), new LoginEcoleDirecteException()));
-        if (!loginResult.has("token")) throw new LoginEcoleDirecteException(loginResult.get("code")
+        JsonObject loginResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.LOGIN.asString(), JsonUtils.serialize(loginDTOInput), new EcoleDirecteLoginException()));
+        if (!loginResult.has("token")) throw new EcoleDirecteLoginException(loginResult.get("code")
                 .getAsInt(), loginResult.get("message")
                 .getAsString());
         String token = loginResult.get("token")
@@ -65,7 +65,7 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
                 .get(0), AccountDTO.class);
         long idLogin = accountDTO.idLogin();
 
-        JsonObject settingsResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.SETTINGS.asString(idLogin), JsonUtils.serialize(new Object()), tokenHeader(token), new LoginEcoleDirecteException()));
+        JsonObject settingsResult = JsonUtils.deserialize(HttpUtils.postPlainText(HttpUtils.Endpoints.SETTINGS.asString(idLogin), JsonUtils.serialize(new Object()), tokenHeader(token), new EcoleDirecteLoginException()));
         SettingsDTO settingsDTO = JsonUtils.deserialize(settingsResult.get("data"), SettingsDTO.class);
 
         SessionContext context = new DefaultSessionContext(idLogin, token);

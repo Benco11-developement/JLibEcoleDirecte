@@ -60,8 +60,10 @@ public class HttpUtils {
     }
 
     public static List<String> defaultHeaders() {
-        return new ArrayList<>(Arrays.asList("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0",
-                "Content-Type", "text/plain"));
+        return new ArrayList<>(Arrays.asList(
+                "Content-Type", "text/plain",
+                "User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0"
+        ));
     }
 
     public static List<String> tokenHeader(String token) {

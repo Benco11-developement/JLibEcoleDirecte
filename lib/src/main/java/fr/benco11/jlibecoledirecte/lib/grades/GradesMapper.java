@@ -17,8 +17,8 @@ import java.util.stream.Stream;
 public interface GradesMapper {
     GradesMapper MAPPER = Mappers.getMapper(GradesMapper.class);
 
-    default List<Period> periodsDTOtoPeriods(List<PeriodDTO> periodsDTO,
-                                             List<AssignmentDTO> assignmentsDTO) {
+    default List<Period> periodsDTOsToPeriods(List<PeriodDTO> periodsDTO,
+                                              List<AssignmentDTO> assignmentsDTO) {
         Map<String, List<AssignmentDTO>> assignmentsPerPeriod = assignmentsDTO.stream()
                 .collect(Collectors.toMap(AssignmentDTO::codePeriode, List::of, (a, b) -> Stream.concat(a.stream(), b.stream())
                         .toList()));
