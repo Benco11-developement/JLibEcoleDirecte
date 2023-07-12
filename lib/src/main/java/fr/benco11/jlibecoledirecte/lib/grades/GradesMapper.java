@@ -48,7 +48,7 @@ public interface GradesMapper {
     @Mapping(target = "schoolClass", source = "moyenneClasse")
     @Mapping(target = "schoolClassMin", source = "moyenneMin")
     @Mapping(target = "schoolClassMax", source = "moyenneMax")
-    @Mapping(target = "isValueBased", constant = "true")
+    @Mapping(target = "isValueBased", expression = "java(isAverageValueBased(disciplineSetDTO))")
     DefaultMark disciplineSetDTOToAverageMark(DisciplineSetDTO disciplineSetDTO);
 
 
@@ -78,8 +78,8 @@ public interface GradesMapper {
     @Mapping(target = "schoolClass", source = "moyenneClasse")
     @Mapping(target = "schoolClassMin", source = "moyenneMin")
     @Mapping(target = "schoolClassMax", source = "moyenneMax")
-    @Mapping(target = "isValueBased", constant = "true")
-    DefaultMark disciplineDTOToMark(DisciplineDTO disciplineDTO);
+    @Mapping(target = "isValueBased", expression = "java(isAverageValueBased(disciplineDTO))")
+    DefaultMark disciplineDTOToAverageMark(DisciplineDTO disciplineDTO);
 
     default List<String> commentsMapping(List<String> comments) {
         return comments.stream().map(c -> new String(Base64.getMimeDecoder().decode(c))).toList();
@@ -115,5 +115,13 @@ public interface GradesMapper {
                         .equals(a.codeSousMatiere())))
                 .map(a -> (Assignment) assignmentDTOToAssignment(a))
                 .toList();
+    }
+
+    default boolean isAverageValueBased(DisciplineDTO disciplineDTO) {
+        return disciplineDTO.coef() == 0 && disciplineDTO.moyenne() == 0 && disciplineDTO.moyenneClasse() == 0 && disciplineDTO.moyenneMax() == 0 && disciplineDTO.moyenneMin() == 0;
+    }
+
+    default boolean isAverageValueBased(DisciplineSetDTO disciplineSetDTO) {
+        return disciplineSetDTO.moyenneGenerale() == 0 && disciplineSetDTO.moyenneClasse() == 0 && disciplineSetDTO.moyenneMax() == 0 && disciplineSetDTO.moyenneMin() == 0;
     }
 }

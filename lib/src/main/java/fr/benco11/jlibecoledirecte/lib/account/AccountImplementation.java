@@ -3,10 +3,6 @@ package fr.benco11.jlibecoledirecte.lib.account;
 import java.util.Arrays;
 
 public record AccountImplementation(ImplementationType type, Object... args) {
-    public enum ImplementationType {
-        DEFAULT, CACHED, PRE_LOAD_CACHE
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -28,5 +24,9 @@ public record AccountImplementation(ImplementationType type, Object... args) {
                 "type=" + type +
                 ", args=" + Arrays.toString(args) +
                 '}';
+    }
+
+    public enum ImplementationType {
+        DEFAULT, CACHED, PRE_LOAD_CACHE
     }
 }

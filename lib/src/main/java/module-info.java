@@ -1,5 +1,5 @@
-module JLibEcoleDirecte.lib.main {
-    requires transitive JLibEcoleDirecte.api.main;
+module JLibEcoleDirecte.lib {
+    requires transitive JLibEcoleDirecte.api;
     requires org.mapstruct;
     requires transitive java.net.http;
     requires transitive com.google.gson;

@@ -1,12 +1,17 @@
 plugins {
-    id 'java'
+    id 'checkstyle'
+    id 'java-library'
+    id "org.javamodularity.moduleplugin" version "1.8.12"
 }
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = targetCompatibility = 17
+sourceCompatibility = 11
+targetCompatibility = 11
+
+ext.moduleName = "JLibEcoleDirecte.api"
 
 compileJava.options.encoding = 'UTF-8'
 

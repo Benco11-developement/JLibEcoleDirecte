@@ -1,4 +1,4 @@
-module JLibEcoleDirecte.api.main {
+module JLibEcoleDirecte.api {
     exports fr.benco11.jlibecoledirecte.api.exception;
     exports fr.benco11.jlibecoledirecte.api.exception.runtime;
     exports fr.benco11.jlibecoledirecte.api.session;

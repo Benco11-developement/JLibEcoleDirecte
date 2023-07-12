@@ -1,4 +1,5 @@
 plugins {
+    id 'checkstyle'
     id 'java-library'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
@@ -14,10 +15,13 @@ compileJava.options.encoding = 'UTF-8'
 group 'fr.benco11'
 version '2.0.0'
 
+ext.moduleName = "JLibEcoleDirecte.lib"
+
 dependencies {
     api project(":api")
 
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
+    compileOnly 'org.jetbrains:annotations:24.0.1'
     compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
@@ -45,6 +49,6 @@ javadoc {
     docsDirName = '../docs/'
 }
 
-artifacts {
-    archives javadocJar
-}
+/**artifacts {
+ archives javadocJar
+ }**/
