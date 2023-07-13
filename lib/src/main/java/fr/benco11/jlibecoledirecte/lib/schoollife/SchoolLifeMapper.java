@@ -2,21 +2,26 @@ package fr.benco11.jlibecoledirecte.lib.schoollife;
 
 import fr.benco11.jlibecoledirecte.api.schoollife.SchoolEvent;
 import fr.benco11.jlibecoledirecte.api.schoollife.SchoolLife;
-import fr.benco11.jlibecoledirecte.lib.schoollife.dto.SchoolEventDTO;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
-
+import fr.benco11.jlibecoledirecte.lib.schoollife.dto.SchoolEventDto;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface SchoolLifeMapper {
     SchoolLifeMapper MAPPER = Mappers.getMapper(SchoolLifeMapper.class);
 
-    default SchoolLife schoolEventDTOsToSchoolLife(List<SchoolEventDTO> sanctions, List<SchoolEventDTO> absences, Map<String, Boolean> parameters) {
-        return new DefaultSchoolLife(Stream.concat(sanctions.stream().map(e -> schoolEventDTOToSchoolEvent(e, true)), absences.stream().map(e -> (SchoolEvent) schoolEventDTOToSchoolEvent(e, false))).toList(), parameters);
+    default SchoolLife schoolEventDtosToSchoolLife(
+            List<SchoolEventDto> sanctions, List<SchoolEventDto> absences, Map<String, Boolean> parameters) {
+        return new DefaultSchoolLife(
+                Stream.concat(
+                                sanctions.stream().map(e -> schoolEventDtoToSchoolEvent(e, true)),
+                                absences.stream().map(e -> (SchoolEvent) schoolEventDtoToSchoolEvent(e, false)))
+                        .toList(),
+                parameters);
     }
 
     @Mapping(target = "id", source = "event.id")
@@ -32,5 +37,5 @@ public interface SchoolLifeMapper {
     @Mapping(target = "justificationType", source = "event.typeJustification")
     @Mapping(target = "toDo", source = "event.aFaire")
     @Mapping(target = "toDoDate", source = "event.dateDeroulement")
-    DefaultSchoolEvent schoolEventDTOToSchoolEvent(SchoolEventDTO event, boolean isSanction);
+    DefaultSchoolEvent schoolEventDtoToSchoolEvent(SchoolEventDto event, boolean isSanction);
 }

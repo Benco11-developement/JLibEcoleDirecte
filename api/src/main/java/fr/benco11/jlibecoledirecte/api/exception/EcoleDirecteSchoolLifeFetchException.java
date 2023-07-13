@@ -12,7 +12,8 @@ public class EcoleDirecteSchoolLifeFetchException extends EcoleDirecteException 
 
     @Override
     public String getMessage() {
-        return (message != null) ? "Erreur lors de la récupération des données de la vie scolaire (code " + code + ") : " + message
+        return (message != null)
+                ? "Erreur lors de la récupération des données de la vie scolaire (code " + code + ") : " + message
                 : "Erreur lors de la récupération des données de la vie scolaire !";
     }
 }

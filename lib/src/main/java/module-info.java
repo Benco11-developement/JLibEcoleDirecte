@@ -4,7 +4,6 @@ module JLibEcoleDirecte.lib {
     requires transitive java.net.http;
     requires transitive com.google.gson;
 
-
     exports fr.benco11.jlibecoledirecte.lib;
     exports fr.benco11.jlibecoledirecte.lib.schoollife;
     exports fr.benco11.jlibecoledirecte.lib.schoollife.dto;

@@ -13,5 +13,5 @@ public interface UserProfile {
 
     String phone();
 
-    URL pictureURL();
+    URL pictureUrl();
 }

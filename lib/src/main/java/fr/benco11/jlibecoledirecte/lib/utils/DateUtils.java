@@ -9,14 +9,14 @@ import java.time.format.DateTimeParseException;
 import java.util.function.Function;
 
 public class DateUtils {
-    private DateUtils() {
-    }
+    private DateUtils() {}
 
     public static Period period(LocalDate a, LocalDate b) {
         return Period.between(a, b);
     }
 
-    private static <T> T parse(String toParse, DateTimeFormatter format, Function<Pair<String, DateTimeFormatter>, T> parseFunction) {
+    private static <T> T parse(
+            String toParse, DateTimeFormatter format, Function<Pair<String, DateTimeFormatter>, T> parseFunction) {
         try {
             return parseFunction.apply(new Pair<>(toParse, format));
         } catch (DateTimeParseException e) {

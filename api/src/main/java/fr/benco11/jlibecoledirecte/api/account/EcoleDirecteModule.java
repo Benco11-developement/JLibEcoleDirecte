@@ -10,5 +10,4 @@ public interface EcoleDirecteModule {
     int order();
 
     Map<String, Object> params();
-
 }

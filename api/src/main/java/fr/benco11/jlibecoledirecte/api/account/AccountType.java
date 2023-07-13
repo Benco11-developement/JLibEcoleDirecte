@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum AccountType {
-    STUDENT("E"), FAMILY("1"), TEACHER("P"), STAFF("A");
+    STUDENT("E"),
+    FAMILY("1"),
+    TEACHER("P"),
+    STAFF("A");
 
     private final String code;
 
@@ -13,9 +16,7 @@ public enum AccountType {
     }
 
     public static Optional<AccountType> accountType(String code) {
-        return Arrays.stream(values())
-                .filter(t -> t.code.equals(code))
-                .findAny();
+        return Arrays.stream(values()).filter(t -> t.code.equals(code)).findAny();
     }
 
     public String getCode() {

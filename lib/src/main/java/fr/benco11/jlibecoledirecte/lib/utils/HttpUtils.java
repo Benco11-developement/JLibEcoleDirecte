@@ -1,5 +1,7 @@
 package fr.benco11.jlibecoledirecte.lib.utils;
 
+import static fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.HttpProtocol.HTTPS;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -11,60 +13,69 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.HttpProtocol.HTTPS;
-
 public class HttpUtils {
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
 
-    public static <T extends Exception> String postPlainText(String address,
-                                                             String text,
-                                                             T toThrow) throws T, URISyntaxException, IOException, InterruptedException {
+    public static <T extends Exception> String postPlainText(String address, String text, T toThrow)
+            throws T, URISyntaxException, IOException, InterruptedException {
         return httpRequest(address, HttpMethod.POST, HttpRequest.BodyPublishers.ofString(text), toThrow);
     }
 
-    public static <T extends Exception> String postPlainText(String address, String text,
-                                                             List<String> headers,
-                                                             T toThrow) throws T, URISyntaxException, IOException, InterruptedException {
-        return httpRequest(HTTPS, address, HttpMethod.POST, headers, HttpRequest.BodyPublishers.ofString(text), toThrow);
+    public static <T extends Exception> String postPlainText(
+            String address, String text, List<String> headers, T toThrow)
+            throws T, URISyntaxException, IOException, InterruptedException {
+        return httpRequest(
+                HTTPS, address, HttpMethod.POST, headers, HttpRequest.BodyPublishers.ofString(text), toThrow);
     }
 
-    public static <T extends Exception> String httpRequest(String address, HttpMethod method,
-                                                           HttpRequest.BodyPublisher body,
-                                                           T toThrow) throws T, URISyntaxException, IOException, InterruptedException {
+    public static <T extends Exception> String httpRequest(
+            String address, HttpMethod method, HttpRequest.BodyPublisher body, T toThrow)
+            throws T, URISyntaxException, IOException, InterruptedException {
         return httpRequest(HTTPS, address, method, defaultHeaders(), body, toThrow);
     }
 
-    public static HttpResponse<String> httpRequest(HttpProtocol protocol, String address,
-                                                   HttpMethod method, List<String> headers,
-                                                   HttpRequest.BodyPublisher body) throws URISyntaxException, IOException, InterruptedException {
-        HttpRequest.Builder requestBuilder = HttpRequest.newBuilder()
-                .uri(protocol.getURL(address)
-                        .toURI())
-                .headers(headers.toArray(String[]::new));
-        HttpRequest request = (switch (method) {
-            case GET -> requestBuilder.GET();
-            case POST -> {
-                if (body == null) throw new IllegalArgumentException("Une requête POST nécessite un BodyPublisher !");
-                yield requestBuilder.POST(body);
+    public static HttpResponse<String> httpRequest(
+            HttpProtocol protocol,
+            String address,
+            HttpMethod method,
+            List<String> headers,
+            HttpRequest.BodyPublisher body)
+            throws URISyntaxException, IOException, InterruptedException {
+        HttpRequest.Builder requestBuilder =
+                HttpRequest.newBuilder().uri(protocol.getUrl(address).toURI()).headers(headers.toArray(String[]::new));
+        HttpRequest request;
+        if (method == HttpMethod.POST) {
+            if (body == null) {
+                throw new IllegalArgumentException("Une requête POST nécessite un BodyPublisher !");
             }
-        }).build();
+            request = requestBuilder.POST(body).build();
+        } else {
+            request = requestBuilder.GET().build();
+        }
         return CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public static <T extends Exception> String httpRequest(HttpProtocol protocol, String address,
-                                                           HttpMethod method, List<String> headers,
-                                                           HttpRequest.BodyPublisher body,
-                                                           T toThrow) throws T, URISyntaxException, IOException, InterruptedException {
+    public static <T extends Exception> String httpRequest(
+            HttpProtocol protocol,
+            String address,
+            HttpMethod method,
+            List<String> headers,
+            HttpRequest.BodyPublisher body,
+            T toThrow)
+            throws T, URISyntaxException, IOException, InterruptedException {
         HttpResponse<String> response = httpRequest(protocol, address, method, headers, body);
-        if (response.statusCode() != 200 && toThrow != null) throw toThrow;
+        if (response.statusCode() != 200 && toThrow != null) {
+            throw toThrow;
+        }
         return response.body();
     }
 
     public static List<String> defaultHeaders() {
         return new ArrayList<>(Arrays.asList(
-                "Content-Type", "text/plain",
-                "User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0"
-        ));
+                "Content-Type",
+                "text/plain",
+                "User-Agent",
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0"));
     }
 
     public static List<String> tokenHeader(String token) {
@@ -91,24 +102,25 @@ public class HttpUtils {
         public String asString(Object... args) {
             return url.formatted(args);
         }
-
     }
 
     public enum HttpProtocol {
-        HTTP("http://"), HTTPS("https://");
+        HTTP("http://"),
+        HTTPS("https://");
 
-        private final String protocolURI;
+        private final String protocolUri;
 
-        HttpProtocol(String protocolURI) {
-            this.protocolURI = protocolURI;
+        HttpProtocol(String protocolUri) {
+            this.protocolUri = protocolUri;
         }
 
-        public URL getURL(String address) throws MalformedURLException {
-            return new URL(protocolURI + address);
+        public URL getUrl(String address) throws MalformedURLException {
+            return new URL(protocolUri + address);
         }
     }
 
     public enum HttpMethod {
-        GET, POST
+        GET,
+        POST
     }
 }

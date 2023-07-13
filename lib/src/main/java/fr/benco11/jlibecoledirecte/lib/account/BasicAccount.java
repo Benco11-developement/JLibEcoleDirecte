@@ -1,9 +1,7 @@
 package fr.benco11.jlibecoledirecte.lib.account;
 
-
 import fr.benco11.jlibecoledirecte.api.account.*;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
-
 import java.util.List;
 
 public abstract sealed class BasicAccount implements Account permits DefaultStudentAccount {
@@ -13,8 +11,12 @@ public abstract sealed class BasicAccount implements Account permits DefaultStud
     protected final PersonalDetails personalDetails;
     protected final UserProfile userProfile;
 
-    public BasicAccount(AccountType accountType, List<EcoleDirecteModule> modules,
-                        PersonalDetails personalDetails, UserProfile userProfile, SessionContext context) {
+    protected BasicAccount(
+            AccountType accountType,
+            List<EcoleDirecteModule> modules,
+            PersonalDetails personalDetails,
+            UserProfile userProfile,
+            SessionContext context) {
         this.accountType = accountType;
         this.modules = modules;
         this.personalDetails = personalDetails;

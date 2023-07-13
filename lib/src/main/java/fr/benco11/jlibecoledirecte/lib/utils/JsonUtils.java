@@ -8,7 +8,6 @@ import fr.benco11.jlibecoledirecte.lib.adapter.DoubleDeserializer;
 import fr.benco11.jlibecoledirecte.lib.adapter.LocalDateDeserializer;
 import fr.benco11.jlibecoledirecte.lib.adapter.LocalDateTimeDeserializer;
 import fr.benco11.jlibecoledirecte.lib.adapter.LocalTimeDeserializer;
-
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,14 +16,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class JsonUtils {
-    public static final Gson GSON = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
+    public static final Gson GSON = new GsonBuilder()
+            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
             .registerTypeAdapter(LocalDate.class, new LocalDateDeserializer())
             .registerTypeAdapter(LocalTime.class, new LocalTimeDeserializer())
             .registerTypeAdapter(Double.class, new DoubleDeserializer())
             .create();
 
-    private JsonUtils() {
-    }
+    private JsonUtils() {}
 
     public static String serialize(Object o) {
         return "data=" + GSON.toJson(o);

@@ -5,34 +5,35 @@ import fr.benco11.jlibecoledirecte.api.account.EcoleDirecteModule;
 import fr.benco11.jlibecoledirecte.api.account.PersonalDetails;
 import fr.benco11.jlibecoledirecte.api.account.UserProfile;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
-import fr.benco11.jlibecoledirecte.lib.account.dto.AccountDTO;
-import fr.benco11.jlibecoledirecte.lib.account.dto.ModuleDTO;
-import fr.benco11.jlibecoledirecte.lib.account.dto.SettingsDTO;
+import fr.benco11.jlibecoledirecte.lib.account.dto.AccountDto;
+import fr.benco11.jlibecoledirecte.lib.account.dto.ModuleDto;
+import fr.benco11.jlibecoledirecte.lib.account.dto.SettingsDto;
 import fr.benco11.jlibecoledirecte.lib.account.factory.AccountFactory;
 import fr.benco11.jlibecoledirecte.lib.exception.runtime.EcoleDirecteMappingException;
+import java.net.MalformedURLException;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-
-import java.net.MalformedURLException;
-import java.util.List;
 
 @Mapper
 public interface AccountMapper {
     AccountMapper MAPPER = Mappers.getMapper(AccountMapper.class);
 
-    default BasicAccount accountDTOAndSettingsDTOToDefaultAccount(
-            AccountDTO accountDTO, SettingsDTO settingsDTO, String password,
-            AccountFactory accountFactory, SessionContext context) {
+    default BasicAccount accountDtoAndSettingsDtoToDefaultAccount(
+            AccountDto account,
+            SettingsDto settings,
+            String password,
+            AccountFactory accountFactory,
+            SessionContext context) {
         try {
-            AccountType accountType = AccountType.accountType(accountDTO.typeCompte())
-                    .orElseThrow(EcoleDirecteMappingException::new);
-            List<EcoleDirecteModule> modules = accountDTO.modules()
-                    .stream()
-                    .map(dto -> (EcoleDirecteModule) moduleDTOToModule(dto))
+            AccountType accountType =
+                    AccountType.accountType(account.typeCompte()).orElseThrow(EcoleDirecteMappingException::new);
+            List<EcoleDirecteModule> modules = account.modules().stream()
+                    .map(dto -> (EcoleDirecteModule) moduleDtoToModule(dto))
                     .toList();
-            PersonalDetails personalDetails = accountDTOToPersonalDetails(accountDTO);
-            UserProfile userProfile = accountDTOAndSettingsDTOToUserProfile(accountDTO, settingsDTO, password);
+            PersonalDetails personalDetails = accountDtoToPersonalDetails(account);
+            UserProfile userProfile = accountDtoAndSettingsDtoToUserProfile(account, settings, password);
             return accountFactory.getAccount(accountType, modules, personalDetails, userProfile, context);
         } catch (MalformedURLException exception) {
             throw new EcoleDirecteMappingException();
@@ -41,7 +42,7 @@ public interface AccountMapper {
 
     @Mapping(target = "enabled", source = "enable")
     @Mapping(target = "order", source = "ordre")
-    DefaultEcoleDirecteModule moduleDTOToModule(ModuleDTO moduleDTO);
+    DefaultEcoleDirecteModule moduleDtoToModule(ModuleDto module);
 
     @Mapping(target = "firstName", source = "prenom")
     @Mapping(target = "lastName", source = "nom")
@@ -50,14 +51,17 @@ public interface AccountMapper {
     @Mapping(target = "currentSchoolYear", source = "anneeScolaireCourante")
     @Mapping(target = "className", source = "profile.classe.libelle")
     @Mapping(target = "classCode", source = "profile.classe.code")
-    DefaultPersonalDetails accountDTOToPersonalDetails(AccountDTO accountDTO);
+    DefaultPersonalDetails accountDtoToPersonalDetails(AccountDto account);
 
-
-    @Mapping(target = "id", source = "accountDTO.id")
-    @Mapping(target = "email", source = "accountDTO.email")
-    @Mapping(target = "username", source = "accountDTO.identifiant")
-    @Mapping(target = "phone", source = "settingsDTO.portable")
-    @Mapping(target = "pictureURL", expression = "java(fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.HttpProtocol.HTTPS.getURL(accountDTO.profile().photo().replaceAll(\"^//\", \"\")))")
-    DefaultUserProfile accountDTOAndSettingsDTOToUserProfile(AccountDTO accountDTO,
-                                                             SettingsDTO settingsDTO, String password) throws MalformedURLException;
+    @Mapping(target = "id", source = "account.id")
+    @Mapping(target = "email", source = "account.email")
+    @Mapping(target = "username", source = "account.identifiant")
+    @Mapping(target = "phone", source = "settings.portable")
+    @Mapping(
+            target = "pictureUrl",
+            expression =
+                    "java(fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.HttpProtocol.HTTPS.getUrl(account.profile"
+                            + "().photo().replaceAll(\"^//\", \"\")))")
+    DefaultUserProfile accountDtoAndSettingsDtoToUserProfile(AccountDto account, SettingsDto settings, String password)
+            throws MalformedURLException;
 }

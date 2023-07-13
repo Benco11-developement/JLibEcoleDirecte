@@ -22,5 +22,4 @@ public interface Assignment {
     LocalDate date();
 
     Mark mark();
-
 }
