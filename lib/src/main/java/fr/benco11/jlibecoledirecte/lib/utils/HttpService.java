@@ -1,6 +1,6 @@
 package fr.benco11.jlibecoledirecte.lib.utils;
 
-import static fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.HttpProtocol.HTTPS;
+import static fr.benco11.jlibecoledirecte.lib.utils.HttpService.HttpProtocol.HTTPS;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,33 +13,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class HttpUtils {
-    private static final HttpClient CLIENT = HttpClient.newHttpClient();
+public class HttpService {
+    private final HttpClient client = HttpClient.newHttpClient();
 
-    public static <T extends Exception> String postPlainText(String address, String text, T toThrow)
+    public <T extends Exception> String postPlainText(String address, String text, T toThrow)
             throws T, URISyntaxException, IOException, InterruptedException {
-        return httpRequest(address, HttpMethod.POST, HttpRequest.BodyPublishers.ofString(text), toThrow);
+        return request(address, HttpMethod.POST, text, toThrow);
     }
 
-    public static <T extends Exception> String postPlainText(
-            String address, String text, List<String> headers, T toThrow)
+    public <T extends Exception> String postPlainText(String address, String text, List<String> headers, T toThrow)
             throws T, URISyntaxException, IOException, InterruptedException {
-        return httpRequest(
-                HTTPS, address, HttpMethod.POST, headers, HttpRequest.BodyPublishers.ofString(text), toThrow);
+        return request(HTTPS, address, HttpMethod.POST, headers, text, toThrow);
     }
 
-    public static <T extends Exception> String httpRequest(
-            String address, HttpMethod method, HttpRequest.BodyPublisher body, T toThrow)
+    public <T extends Exception> String request(String address, HttpMethod method, String body, T toThrow)
             throws T, URISyntaxException, IOException, InterruptedException {
-        return httpRequest(HTTPS, address, method, defaultHeaders(), body, toThrow);
+        return request(HTTPS, address, method, defaultHeaders(), body, toThrow);
     }
 
-    public static HttpResponse<String> httpRequest(
-            HttpProtocol protocol,
-            String address,
-            HttpMethod method,
-            List<String> headers,
-            HttpRequest.BodyPublisher body)
+    public HttpResponse<String> request(
+            HttpProtocol protocol, String address, HttpMethod method, List<String> headers, String body)
             throws URISyntaxException, IOException, InterruptedException {
         HttpRequest.Builder requestBuilder =
                 HttpRequest.newBuilder().uri(protocol.getUrl(address).toURI()).headers(headers.toArray(String[]::new));
@@ -48,22 +41,19 @@ public class HttpUtils {
             if (body == null) {
                 throw new IllegalArgumentException("Une requête POST nécessite un BodyPublisher !");
             }
-            request = requestBuilder.POST(body).build();
+            request = requestBuilder
+                    .POST(HttpRequest.BodyPublishers.ofString(body))
+                    .build();
         } else {
             request = requestBuilder.GET().build();
         }
-        return CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
+        return client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public static <T extends Exception> String httpRequest(
-            HttpProtocol protocol,
-            String address,
-            HttpMethod method,
-            List<String> headers,
-            HttpRequest.BodyPublisher body,
-            T toThrow)
+    public <T extends Exception> String request(
+            HttpProtocol protocol, String address, HttpMethod method, List<String> headers, String body, T toThrow)
             throws T, URISyntaxException, IOException, InterruptedException {
-        HttpResponse<String> response = httpRequest(protocol, address, method, headers, body);
+        HttpResponse<String> response = request(protocol, address, method, headers, body);
         if (response.statusCode() != 200 && toThrow != null) {
             throw toThrow;
         }

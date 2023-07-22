@@ -10,6 +10,7 @@ import fr.benco11.jlibecoledirecte.lib.account.dto.ModuleDto;
 import fr.benco11.jlibecoledirecte.lib.account.dto.SettingsDto;
 import fr.benco11.jlibecoledirecte.lib.account.factory.AccountFactory;
 import fr.benco11.jlibecoledirecte.lib.exception.runtime.EcoleDirecteMappingException;
+import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
 import java.net.MalformedURLException;
 import java.util.List;
 import org.mapstruct.Mapper;
@@ -25,7 +26,8 @@ public interface AccountMapper {
             SettingsDto settings,
             String password,
             AccountFactory accountFactory,
-            SessionContext context) {
+            SessionContext context,
+            HttpService httpService) {
         try {
             AccountType accountType =
                     AccountType.accountType(account.typeCompte()).orElseThrow(EcoleDirecteMappingException::new);
@@ -34,7 +36,8 @@ public interface AccountMapper {
                     .toList();
             PersonalDetails personalDetails = accountDtoToPersonalDetails(account);
             UserProfile userProfile = accountDtoAndSettingsDtoToUserProfile(account, settings, password);
-            return accountFactory.getAccount(accountType, modules, personalDetails, userProfile, context);
+            return accountFactory.getAccount(
+                    new AccountData(accountType, modules, personalDetails, userProfile), context, httpService);
         } catch (MalformedURLException exception) {
             throw new EcoleDirecteMappingException();
         }
@@ -60,7 +63,7 @@ public interface AccountMapper {
     @Mapping(
             target = "pictureUrl",
             expression =
-                    "java(fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.HttpProtocol.HTTPS.getUrl(account.profile"
+                    "java(fr.benco11.jlibecoledirecte.lib.utils.HttpService.HttpProtocol.HTTPS.getUrl(account.profile"
                             + "().photo().replaceAll(\"^//\", \"\")))")
     DefaultUserProfile accountDtoAndSettingsDtoToUserProfile(AccountDto account, SettingsDto settings, String password)
             throws MalformedURLException;

@@ -1,6 +1,6 @@
 package fr.benco11.jlibecoledirecte.lib;
 
-import static fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.tokenHeader;
+import static fr.benco11.jlibecoledirecte.lib.utils.HttpService.tokenHeader;
 
 import com.google.gson.JsonObject;
 import fr.benco11.jlibecoledirecte.api.exception.EcoleDirecteLoginException;
@@ -15,7 +15,7 @@ import fr.benco11.jlibecoledirecte.lib.account.dto.SettingsDto;
 import fr.benco11.jlibecoledirecte.lib.account.factory.AccountFactory;
 import fr.benco11.jlibecoledirecte.lib.session.DefaultSession;
 import fr.benco11.jlibecoledirecte.lib.session.DefaultSessionContext;
-import fr.benco11.jlibecoledirecte.lib.utils.HttpUtils;
+import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
 import fr.benco11.jlibecoledirecte.lib.utils.JsonUtils;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -26,11 +26,13 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
     private final String username;
     private final String password;
     private Duration sessionDuration;
+    private HttpService httpService;
     private AccountFactory accountFactory;
 
     public EcoleDirecteSessionBuilder(String username, String password) {
         this.username = username;
         this.password = password;
+        this.httpService = new HttpService();
         this.sessionDuration = DEFAULT_SESSION_DURATION;
         this.accountFactory = AccountFactory.defaultFactory(
                 new AccountImplementation(AccountImplementation.ImplementationType.DEFAULT));
@@ -55,11 +57,16 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
         return this;
     }
 
+    public EcoleDirecteSessionBuilder httpService(HttpService httpService) {
+        this.httpService = httpService;
+        return this;
+    }
+
     @Override
     public Session login() throws URISyntaxException, IOException, InterruptedException, EcoleDirecteLoginException {
         LoginDtoInput loginDtoInput = new LoginDtoInput(username, password);
-        JsonObject loginResult = JsonUtils.deserialize(HttpUtils.postPlainText(
-                HttpUtils.Endpoints.LOGIN.asString(),
+        JsonObject loginResult = JsonUtils.deserialize(httpService.postPlainText(
+                HttpService.Endpoints.LOGIN.asString(),
                 JsonUtils.serialize(loginDtoInput),
                 new EcoleDirecteLoginException()));
         if (!loginResult.has("token")) {
@@ -72,8 +79,8 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
                 loginResult.getAsJsonObject("data").getAsJsonArray("accounts").get(0), AccountDto.class);
         long idLogin = accountDto.idLogin();
 
-        JsonObject settingsResult = JsonUtils.deserialize(HttpUtils.postPlainText(
-                HttpUtils.Endpoints.SETTINGS.asString(idLogin),
+        JsonObject settingsResult = JsonUtils.deserialize(httpService.postPlainText(
+                HttpService.Endpoints.SETTINGS.asString(idLogin),
                 JsonUtils.serialize(new Object()),
                 tokenHeader(token),
                 new EcoleDirecteLoginException()));
@@ -85,6 +92,6 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
                 sessionDuration,
                 accountDto.lastConnexion(),
                 AccountMapper.MAPPER.accountDtoAndSettingsDtoToDefaultAccount(
-                        accountDto, settingsDto, password, accountFactory, context));
+                        accountDto, settingsDto, password, accountFactory, context, httpService));
     }
 }

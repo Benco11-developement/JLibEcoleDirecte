@@ -1,26 +1,18 @@
 package fr.benco11.jlibecoledirecte.lib.account.factory;
 
-import fr.benco11.jlibecoledirecte.api.account.AccountType;
-import fr.benco11.jlibecoledirecte.api.account.EcoleDirecteModule;
-import fr.benco11.jlibecoledirecte.api.account.PersonalDetails;
-import fr.benco11.jlibecoledirecte.api.account.UserProfile;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
+import fr.benco11.jlibecoledirecte.lib.account.AccountData;
 import fr.benco11.jlibecoledirecte.lib.account.BasicAccount;
 import fr.benco11.jlibecoledirecte.lib.account.DefaultStudentAccount;
-import java.util.List;
+import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
 
 public class DefaultAccountFactory implements AccountFactory {
     @Override
-    public BasicAccount getAccount(
-            AccountType accountType,
-            List<EcoleDirecteModule> modules,
-            PersonalDetails personalDetails,
-            UserProfile userProfile,
-            SessionContext context) {
+    public BasicAccount getAccount(AccountData accountData, SessionContext context, HttpService httpService) {
 
         // TODO autres implémentations
-        return switch (accountType) {
-            case STUDENT -> new DefaultStudentAccount(accountType, modules, personalDetails, userProfile, context);
+        return switch (accountData.accountType()) {
+            case STUDENT -> new DefaultStudentAccount(accountData, context, httpService);
             case FAMILY -> null;
             case TEACHER -> null;
             case STAFF -> null;

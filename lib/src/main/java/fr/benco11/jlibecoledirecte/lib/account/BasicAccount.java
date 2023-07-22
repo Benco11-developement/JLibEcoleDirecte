@@ -2,6 +2,7 @@ package fr.benco11.jlibecoledirecte.lib.account;
 
 import fr.benco11.jlibecoledirecte.api.account.*;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
+import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
 import java.util.List;
 
 public abstract sealed class BasicAccount implements Account permits DefaultStudentAccount {
@@ -10,18 +11,15 @@ public abstract sealed class BasicAccount implements Account permits DefaultStud
     protected final List<EcoleDirecteModule> modules;
     protected final PersonalDetails personalDetails;
     protected final UserProfile userProfile;
+    protected final HttpService httpService;
 
-    protected BasicAccount(
-            AccountType accountType,
-            List<EcoleDirecteModule> modules,
-            PersonalDetails personalDetails,
-            UserProfile userProfile,
-            SessionContext context) {
-        this.accountType = accountType;
-        this.modules = modules;
-        this.personalDetails = personalDetails;
-        this.userProfile = userProfile;
+    protected BasicAccount(AccountData accountData, SessionContext context, HttpService httpService) {
+        this.accountType = accountData.accountType();
+        this.modules = accountData.modules();
+        this.personalDetails = accountData.personalDetails();
+        this.userProfile = accountData.userProfile();
         this.context = context;
+        this.httpService = httpService;
     }
 
     @Override

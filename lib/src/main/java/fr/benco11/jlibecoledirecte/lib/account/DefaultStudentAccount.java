@@ -1,6 +1,6 @@
 package fr.benco11.jlibecoledirecte.lib.account;
 
-import static fr.benco11.jlibecoledirecte.lib.utils.HttpUtils.tokenHeader;
+import static fr.benco11.jlibecoledirecte.lib.utils.HttpService.tokenHeader;
 import static fr.benco11.jlibecoledirecte.lib.utils.JsonUtils.data;
 
 import com.google.gson.JsonObject;
@@ -16,7 +16,7 @@ import fr.benco11.jlibecoledirecte.lib.grades.dto.AssignmentDto;
 import fr.benco11.jlibecoledirecte.lib.grades.dto.PeriodDto;
 import fr.benco11.jlibecoledirecte.lib.schoollife.SchoolLifeMapper;
 import fr.benco11.jlibecoledirecte.lib.schoollife.dto.SchoolEventDto;
-import fr.benco11.jlibecoledirecte.lib.utils.HttpUtils;
+import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
 import fr.benco11.jlibecoledirecte.lib.utils.JsonUtils;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -27,20 +27,15 @@ import java.util.Optional;
 public sealed class DefaultStudentAccount extends BasicAccount implements StudentAccount permits CachedStudentAccount {
     public static final String PERIOD_PREFIX = "A00";
 
-    public DefaultStudentAccount(
-            AccountType accountType,
-            List<EcoleDirecteModule> modules,
-            PersonalDetails personalDetails,
-            UserProfile userProfile,
-            SessionContext context) {
-        super(accountType, modules, personalDetails, userProfile, context);
+    public DefaultStudentAccount(AccountData accountData, SessionContext context, HttpService httpService) {
+        super(accountData, context, httpService);
     }
 
     @Override
     public List<Period> periods()
             throws EcoleDirecteGradesFetchException, URISyntaxException, IOException, InterruptedException {
-        JsonObject periodsJson = data(HttpUtils.postPlainText(
-                HttpUtils.Endpoints.GRADE.asString(userProfile.id()),
+        JsonObject periodsJson = data(httpService.postPlainText(
+                HttpService.Endpoints.GRADE.asString(userProfile.id()),
                 JsonUtils.serialize(new Object()),
                 tokenHeader(context.token()),
                 new EcoleDirecteGradesFetchException()));
@@ -64,8 +59,8 @@ public sealed class DefaultStudentAccount extends BasicAccount implements Studen
     @Override
     public SchoolLife schoolLife()
             throws EcoleDirecteSchoolLifeFetchException, URISyntaxException, IOException, InterruptedException {
-        JsonObject schoolLifeJson = data(HttpUtils.postPlainText(
-                HttpUtils.Endpoints.SCHOOL_LIFE.asString(userProfile.id()),
+        JsonObject schoolLifeJson = data(httpService.postPlainText(
+                HttpService.Endpoints.SCHOOL_LIFE.asString(userProfile.id()),
                 JsonUtils.serialize(new Object()),
                 tokenHeader(context.token()),
                 new EcoleDirecteSchoolLifeFetchException()));

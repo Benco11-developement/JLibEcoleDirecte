@@ -1,15 +1,12 @@
 package fr.benco11.jlibecoledirecte.lib.account.factory;
 
-import fr.benco11.jlibecoledirecte.api.account.AccountType;
-import fr.benco11.jlibecoledirecte.api.account.EcoleDirecteModule;
-import fr.benco11.jlibecoledirecte.api.account.PersonalDetails;
-import fr.benco11.jlibecoledirecte.api.account.UserProfile;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
+import fr.benco11.jlibecoledirecte.lib.account.AccountData;
 import fr.benco11.jlibecoledirecte.lib.account.BasicAccount;
 import fr.benco11.jlibecoledirecte.lib.account.CachedStudentAccount;
 import fr.benco11.jlibecoledirecte.lib.exception.runtime.EcoleDirecteAccountImplementationException;
+import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
 import java.time.Duration;
-import java.util.List;
 
 public class CachedAccountFactory implements AccountFactory {
     private final Duration cacheTimeout;
@@ -21,18 +18,12 @@ public class CachedAccountFactory implements AccountFactory {
     }
 
     @Override
-    public BasicAccount getAccount(
-            AccountType accountType,
-            List<EcoleDirecteModule> modules,
-            PersonalDetails personalDetails,
-            UserProfile userProfile,
-            SessionContext context) {
+    public BasicAccount getAccount(AccountData accountData, SessionContext context, HttpService httpService) {
 
         // TODO autres implémentations
         try {
-            return switch (accountType) {
-                case STUDENT -> new CachedStudentAccount(
-                        accountType, modules, personalDetails, userProfile, context, preload, cacheTimeout);
+            return switch (accountData.accountType()) {
+                case STUDENT -> new CachedStudentAccount(accountData, context, preload, cacheTimeout, httpService);
                 case FAMILY -> null;
                 case TEACHER -> null;
                 case STAFF -> null;

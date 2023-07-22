@@ -1,15 +1,12 @@
 package fr.benco11.jlibecoledirecte.lib.account;
 
-import fr.benco11.jlibecoledirecte.api.account.AccountType;
-import fr.benco11.jlibecoledirecte.api.account.EcoleDirecteModule;
-import fr.benco11.jlibecoledirecte.api.account.PersonalDetails;
-import fr.benco11.jlibecoledirecte.api.account.UserProfile;
 import fr.benco11.jlibecoledirecte.api.exception.EcoleDirecteGradesFetchException;
 import fr.benco11.jlibecoledirecte.api.exception.EcoleDirecteSchoolLifeFetchException;
 import fr.benco11.jlibecoledirecte.api.grades.Period;
 import fr.benco11.jlibecoledirecte.api.schoollife.SchoolLife;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
 import fr.benco11.jlibecoledirecte.lib.utils.CacheValue;
+import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.Duration;
@@ -21,16 +18,14 @@ public final class CachedStudentAccount extends DefaultStudentAccount {
     private final Map<CacheKey, CacheValue> cache = Collections.synchronizedMap(new EnumMap<>(CacheKey.class));
 
     public CachedStudentAccount(
-            AccountType accountType,
-            List<EcoleDirecteModule> modules,
-            PersonalDetails personalDetails,
-            UserProfile userProfile,
+            AccountData accountData,
             SessionContext context,
             boolean preload,
-            Duration cacheTimeout)
+            Duration cacheTimeout,
+            HttpService httpService)
             throws EcoleDirecteGradesFetchException, URISyntaxException, IOException, InterruptedException,
                     EcoleDirecteSchoolLifeFetchException {
-        super(accountType, modules, personalDetails, userProfile, context);
+        super(accountData, context, httpService);
         this.cacheTimeout = cacheTimeout;
 
         if (preload) {
