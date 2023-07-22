@@ -40,7 +40,3 @@ javadoc {
     options.source("17")
     setDestinationDir(file(".../docs/"))
 }
-
-/**artifacts {
- archives javadocJar
- }**/
