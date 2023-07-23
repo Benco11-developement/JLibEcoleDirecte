@@ -8,7 +8,7 @@ subprojects {
     apply plugin: 'com.diffplug.spotless'
 
     compileJava.options.encoding = 'UTF-8'
-    compileJava.dependsOn 'spotlessApply'
+    compileJava.dependsOn 'spotlessCheck'
 
     group 'fr.benco11'
     version '2.0.0'
