@@ -7,7 +7,7 @@ import fr.benco11.jlibecoledirecte.api.account.UserProfile;
 import java.util.List;
 
 public record AccountData(
-        AccountType accountType,
+        AccountType accountType ,
         List<EcoleDirecteModule> modules,
         PersonalDetails personalDetails,
         UserProfile userProfile) {}
