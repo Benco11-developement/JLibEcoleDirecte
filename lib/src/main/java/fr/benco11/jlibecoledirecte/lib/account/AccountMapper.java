@@ -29,7 +29,7 @@ public interface AccountMapper {
             SessionContext context,
             HttpService httpService) {
         try {
-            AccountType accountType =
+            AccountType   accountType =
                     AccountType.accountType(account.typeCompte()).orElseThrow(EcoleDirecteMappingException::new);
             List<EcoleDirecteModule> modules = account.modules().stream()
                     .map(dto -> (EcoleDirecteModule) moduleDtoToModule(dto))
