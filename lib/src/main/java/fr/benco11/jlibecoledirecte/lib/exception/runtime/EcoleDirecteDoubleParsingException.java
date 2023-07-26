@@ -4,6 +4,6 @@ import fr.benco11.jlibecoledirecte.api.exception.runtime.EcoleDirecteRuntimeExce
 
 public class EcoleDirecteDoubleParsingException extends EcoleDirecteRuntimeException {
     public EcoleDirecteDoubleParsingException() {
-        super(-1, "Une erreur s'est produite lors de la désérialisation d'un double !");
+        super("Une erreur s'est produite lors de la désérialisation d'un double !");
     }
 }

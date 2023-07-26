@@ -1,18 +1,26 @@
 package fr.benco11.jlibecoledirecte.api.exception;
 
 public abstract class EcoleDirecteException extends Exception {
-    protected int code;
-    protected String message;
+    protected final int code;
+    protected final String message;
 
-    public EcoleDirecteException(int code, String message) {
+    protected EcoleDirecteException(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public EcoleDirecteException() {}
+    protected EcoleDirecteException(Throwable cause) {
+        super(cause);
+        code = -1;
+        message = null;
+    }
+
+    protected EcoleDirecteException() {
+        this(-1, null);
+    }
 
     @Override
     public String getMessage() {
-        return message;
+        return (message != null) ? message : super.getMessage();
     }
 }

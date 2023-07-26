@@ -1,4 +1,4 @@
-package fr.benco11.jlibecoledirecte.lib.adapter;
+package fr.benco11.jlibecoledirecte.lib.json;
 
 import static fr.benco11.jlibecoledirecte.lib.utils.DateUtils.parseLocalDateTime;
 

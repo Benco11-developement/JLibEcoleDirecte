@@ -5,6 +5,10 @@ public class EcoleDirecteLoginException extends EcoleDirecteException {
         super(code, message);
     }
 
+    public EcoleDirecteLoginException(Throwable cause) {
+        super(cause);
+    }
+
     public EcoleDirecteLoginException() {
         super();
     }
@@ -12,7 +16,7 @@ public class EcoleDirecteLoginException extends EcoleDirecteException {
     @Override
     public String getMessage() {
         return (message != null)
-                ? "Erreur lors de la connexion (code " + code + ") : " + message
+                ? "Erreur lors de la connexion (http " + code + ") : " + message
                 : "Erreur lors de la connexion !";
     }
 }

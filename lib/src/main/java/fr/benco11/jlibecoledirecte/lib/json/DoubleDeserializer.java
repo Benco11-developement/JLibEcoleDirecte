@@ -1,4 +1,4 @@
-package fr.benco11.jlibecoledirecte.lib.adapter;
+package fr.benco11.jlibecoledirecte.lib.json;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

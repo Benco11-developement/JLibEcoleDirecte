@@ -4,6 +4,6 @@ import fr.benco11.jlibecoledirecte.api.exception.runtime.EcoleDirecteRuntimeExce
 
 public class EcoleDirecteMappingException extends EcoleDirecteRuntimeException {
     public EcoleDirecteMappingException() {
-        super(-1, "Une erreur s'est produite lors d'un mapping d'un DTO obtenu !");
+        super("Une erreur s'est produite lors d'un mapping d'un DTO obtenu !");
     }
 }

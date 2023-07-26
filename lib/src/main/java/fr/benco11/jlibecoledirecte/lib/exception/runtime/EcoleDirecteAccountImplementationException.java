@@ -4,6 +4,6 @@ import fr.benco11.jlibecoledirecte.api.exception.runtime.EcoleDirecteRuntimeExce
 
 public class EcoleDirecteAccountImplementationException extends EcoleDirecteRuntimeException {
     public EcoleDirecteAccountImplementationException() {
-        super(-1, "Une erreur s'est produite lors de la création de l'Account !");
+        super("Une erreur s'est produite lors de la création de l'Account !");
     }
 }

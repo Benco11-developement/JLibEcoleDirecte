@@ -10,7 +10,7 @@ import fr.benco11.jlibecoledirecte.lib.account.dto.ModuleDto;
 import fr.benco11.jlibecoledirecte.lib.account.dto.SettingsDto;
 import fr.benco11.jlibecoledirecte.lib.account.factory.AccountFactory;
 import fr.benco11.jlibecoledirecte.lib.exception.runtime.EcoleDirecteMappingException;
-import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
+import fr.benco11.jlibecoledirecte.lib.session.SessionServices;
 import java.net.MalformedURLException;
 import java.util.List;
 import org.mapstruct.Mapper;
@@ -27,7 +27,7 @@ public interface AccountMapper {
             String password,
             AccountFactory accountFactory,
             SessionContext context,
-            HttpService httpService) {
+            SessionServices sessionServices) {
         try {
             AccountType accountType =
                     AccountType.accountType(account.typeCompte()).orElseThrow(EcoleDirecteMappingException::new);
@@ -37,7 +37,7 @@ public interface AccountMapper {
             PersonalDetails personalDetails = accountDtoToPersonalDetails(account);
             UserProfile userProfile = accountDtoAndSettingsDtoToUserProfile(account, settings, password);
             return accountFactory.getAccount(
-                    new AccountData(accountType, modules, personalDetails, userProfile), context, httpService);
+                    new AccountData(accountType, modules, personalDetails, userProfile), context, sessionServices);
         } catch (MalformedURLException exception) {
             throw new EcoleDirecteMappingException();
         }
@@ -62,9 +62,8 @@ public interface AccountMapper {
     @Mapping(target = "phone", source = "settings.portable")
     @Mapping(
             target = "pictureUrl",
-            expression =
-                    "java(fr.benco11.jlibecoledirecte.lib.utils.HttpService.HttpProtocol.HTTPS.getUrl(account.profile"
-                            + "().photo().replaceAll(\"^//\", \"\")))")
+            expression = "java(fr.benco11.jlibecoledirecte.lib.http.HttpProtocol.HTTPS.getUrl(account.profile"
+                    + "().photo().replaceAll(\"^//\", \"\")))")
     DefaultUserProfile accountDtoAndSettingsDtoToUserProfile(AccountDto account, SettingsDto settings, String password)
             throws MalformedURLException;
 }

@@ -5,7 +5,7 @@ import fr.benco11.jlibecoledirecte.lib.account.AccountData;
 import fr.benco11.jlibecoledirecte.lib.account.BasicAccount;
 import fr.benco11.jlibecoledirecte.lib.account.CachedStudentAccount;
 import fr.benco11.jlibecoledirecte.lib.exception.runtime.EcoleDirecteAccountImplementationException;
-import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
+import fr.benco11.jlibecoledirecte.lib.session.SessionServices;
 import java.time.Duration;
 
 public class CachedAccountFactory implements AccountFactory {
@@ -18,12 +18,12 @@ public class CachedAccountFactory implements AccountFactory {
     }
 
     @Override
-    public BasicAccount getAccount(AccountData accountData, SessionContext context, HttpService httpService) {
+    public BasicAccount getAccount(AccountData accountData, SessionContext context, SessionServices sessionServices) {
 
         // TODO autres implémentations
         try {
             return switch (accountData.accountType()) {
-                case STUDENT -> new CachedStudentAccount(accountData, context, preload, cacheTimeout, httpService);
+                case STUDENT -> new CachedStudentAccount(accountData, context, preload, cacheTimeout, sessionServices);
                 case FAMILY -> null;
                 case TEACHER -> null;
                 case STAFF -> null;

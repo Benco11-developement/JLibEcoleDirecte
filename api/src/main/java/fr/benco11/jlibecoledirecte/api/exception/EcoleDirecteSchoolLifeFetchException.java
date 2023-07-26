@@ -6,6 +6,10 @@ public class EcoleDirecteSchoolLifeFetchException extends EcoleDirecteException 
         super(code, message);
     }
 
+    public EcoleDirecteSchoolLifeFetchException(Throwable cause) {
+        super(cause);
+    }
+
     public EcoleDirecteSchoolLifeFetchException() {
         super();
     }
@@ -13,7 +17,7 @@ public class EcoleDirecteSchoolLifeFetchException extends EcoleDirecteException 
     @Override
     public String getMessage() {
         return (message != null)
-                ? "Erreur lors de la récupération des données de la vie scolaire (code " + code + ") : " + message
+                ? "Erreur lors de la récupération des données de la vie scolaire (http " + code + ") : " + message
                 : "Erreur lors de la récupération des données de la vie scolaire !";
     }
 }

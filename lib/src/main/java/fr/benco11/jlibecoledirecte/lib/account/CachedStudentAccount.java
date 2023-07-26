@@ -5,10 +5,8 @@ import fr.benco11.jlibecoledirecte.api.exception.EcoleDirecteSchoolLifeFetchExce
 import fr.benco11.jlibecoledirecte.api.grades.Period;
 import fr.benco11.jlibecoledirecte.api.schoollife.SchoolLife;
 import fr.benco11.jlibecoledirecte.api.session.SessionContext;
+import fr.benco11.jlibecoledirecte.lib.session.SessionServices;
 import fr.benco11.jlibecoledirecte.lib.utils.CacheValue;
-import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
@@ -22,10 +20,9 @@ public final class CachedStudentAccount extends DefaultStudentAccount {
             SessionContext context,
             boolean preload,
             Duration cacheTimeout,
-            HttpService httpService)
-            throws EcoleDirecteGradesFetchException, URISyntaxException, IOException, InterruptedException,
-                    EcoleDirecteSchoolLifeFetchException {
-        super(accountData, context, httpService);
+            SessionServices sessionServices)
+            throws EcoleDirecteGradesFetchException, EcoleDirecteSchoolLifeFetchException {
+        super(accountData, context, sessionServices);
         this.cacheTimeout = cacheTimeout;
 
         if (preload) {
@@ -35,8 +32,7 @@ public final class CachedStudentAccount extends DefaultStudentAccount {
     }
 
     @Override
-    public List<Period> periods()
-            throws EcoleDirecteGradesFetchException, URISyntaxException, IOException, InterruptedException {
+    public List<Period> periods() throws EcoleDirecteGradesFetchException {
         Optional<Period[]> periodsCache = loadCache(CacheKey.PERIODS, Period[].class);
         if (periodsCache.isPresent()) {
             return Arrays.asList(periodsCache.get());
@@ -47,8 +43,7 @@ public final class CachedStudentAccount extends DefaultStudentAccount {
     }
 
     @Override
-    public SchoolLife schoolLife()
-            throws EcoleDirecteSchoolLifeFetchException, URISyntaxException, IOException, InterruptedException {
+    public SchoolLife schoolLife() throws EcoleDirecteSchoolLifeFetchException {
         Optional<SchoolLife> periodsCache = loadCache(CacheKey.SCHOOL_LIFE, SchoolLife.class);
         if (periodsCache.isPresent()) {
             return periodsCache.get();

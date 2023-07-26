@@ -5,7 +5,7 @@ import fr.benco11.jlibecoledirecte.lib.account.AccountData;
 import fr.benco11.jlibecoledirecte.lib.account.AccountImplementation;
 import fr.benco11.jlibecoledirecte.lib.account.BasicAccount;
 import fr.benco11.jlibecoledirecte.lib.exception.runtime.EcoleDirecteAccountImplementationException;
-import fr.benco11.jlibecoledirecte.lib.utils.HttpService;
+import fr.benco11.jlibecoledirecte.lib.session.SessionServices;
 import java.time.Duration;
 
 public interface AccountFactory {
@@ -23,5 +23,5 @@ public interface AccountFactory {
         };
     }
 
-    BasicAccount getAccount(AccountData accountData, SessionContext context, HttpService httpService);
+    BasicAccount getAccount(AccountData accountData, SessionContext context, SessionServices sessionServices);
 }
