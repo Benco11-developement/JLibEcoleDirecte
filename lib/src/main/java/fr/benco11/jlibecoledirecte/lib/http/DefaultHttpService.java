@@ -23,6 +23,7 @@ public class DefaultHttpService implements HttpService {
         this.jsonService = jsonService;
     }
 
+    @Override
     public <T extends Exception> String request(
             HttpProtocol protocol,
             String address,
