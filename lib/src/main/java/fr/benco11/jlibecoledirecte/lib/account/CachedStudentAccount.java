@@ -54,8 +54,9 @@ public final class CachedStudentAccount extends DefaultStudentAccount {
     }
 
     private <T> Optional<T> loadCache(CacheKey key, Class<T> tClass) {
-        return cache.getOrDefault(key, new CacheValue(cacheTimeout(), Optional.empty()))
-                .value(tClass);
+        return Optional.ofNullable(cache.get(key))
+                .filter(cacheValue -> cacheValue.expires().isAfter(Instant.now()))
+                .flatMap(cacheValue -> cacheValue.value(tClass));
     }
 
     private Instant cacheTimeout() {
