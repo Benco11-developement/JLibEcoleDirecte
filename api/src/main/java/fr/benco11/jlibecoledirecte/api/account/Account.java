@@ -12,5 +12,7 @@ public interface Account {
 
     List<EcoleDirecteModule> modules();
 
+    boolean isModuleEnabled(ModuleType moduleType);
+
     AccountType accountType();
 }

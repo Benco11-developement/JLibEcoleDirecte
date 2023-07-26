@@ -1,22 +1,17 @@
 package fr.benco11.jlibecoledirecte.api.exception;
 
 public class EcoleDirecteLoginException extends EcoleDirecteException {
-    public EcoleDirecteLoginException(int code, String message) {
-        super(code, message);
+    private static final String DEFAULT_MESSAGE = "Erreur lors de la connexion";
+
+    public EcoleDirecteLoginException(int httpCode, int responseCode, String message) {
+        super(httpCode, responseCode, DEFAULT_MESSAGE, message);
     }
 
     public EcoleDirecteLoginException(Throwable cause) {
-        super(cause);
+        super(cause, DEFAULT_MESSAGE);
     }
 
     public EcoleDirecteLoginException() {
-        super();
-    }
-
-    @Override
-    public String getMessage() {
-        return (message != null)
-                ? "Erreur lors de la connexion (http " + code + ") : " + message
-                : "Erreur lors de la connexion !";
+        super(DEFAULT_MESSAGE);
     }
 }

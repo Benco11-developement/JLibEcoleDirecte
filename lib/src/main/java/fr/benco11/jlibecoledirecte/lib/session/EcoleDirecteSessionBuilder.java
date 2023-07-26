@@ -82,6 +82,7 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
                     EcoleDirecteLoginException::new));
             if (!loginResult.has("token")) {
                 throw new EcoleDirecteLoginException(
+                        200,
                         loginResult.get("code").getAsInt(),
                         loginResult.get("message").getAsString());
             }

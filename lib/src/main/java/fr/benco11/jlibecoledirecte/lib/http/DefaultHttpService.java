@@ -4,6 +4,7 @@ import static fr.benco11.jlibecoledirecte.lib.http.HttpProtocol.HTTPS;
 
 import fr.benco11.jlibecoledirecte.lib.json.JsonService;
 import fr.benco11.jlibecoledirecte.lib.utils.Pair;
+import fr.benco11.jlibecoledirecte.lib.utils.TriFunction;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiFunction;
 
 public class DefaultHttpService implements HttpService {
     private final HttpClient client = HttpClient.newHttpClient();
@@ -29,7 +29,7 @@ public class DefaultHttpService implements HttpService {
             HttpMethod method,
             List<String> headers,
             String body,
-            BiFunction<Integer, String, T> toThrow)
+            TriFunction<Integer, Integer, String, T> toThrow)
             throws IOException, URISyntaxException, InterruptedException, T {
         HttpRequest.Builder requestBuilder =
                 HttpRequest.newBuilder().uri(protocol.getUrl(address).toURI()).headers(headers.toArray(String[]::new));
@@ -53,14 +53,16 @@ public class DefaultHttpService implements HttpService {
         Optional<ResponseDto> responseDto = successful.b();
         if (!isSuccessful && toThrow != null) {
             throw toThrow.apply(
-                    responseCode, (responseDto.isPresent()) ? responseDto.get().message() : responseBody);
+                    responseCode,
+                    responseDto.map(ResponseDto::code).orElse(-1),
+                    responseDto.map(ResponseDto::message).orElse(null));
         }
         return response.body();
     }
 
     @Override
     public <T extends Exception> String post(
-            String address, List<String> headers, String body, BiFunction<Integer, String, T> toThrow)
+            String address, List<String> headers, String body, TriFunction<Integer, Integer, String, T> toThrow)
             throws T, IOException, URISyntaxException, InterruptedException {
         return request(HTTPS, address, HttpMethod.POST, headers, body, toThrow);
     }

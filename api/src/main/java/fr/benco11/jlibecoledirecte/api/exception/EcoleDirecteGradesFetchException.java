@@ -1,22 +1,17 @@
 package fr.benco11.jlibecoledirecte.api.exception;
 
 public class EcoleDirecteGradesFetchException extends EcoleDirecteException {
-    public EcoleDirecteGradesFetchException(int code, String message) {
-        super(code, message);
+    private static final String DEFAULT_MESSAGE = "Erreur lors de la récupération des notes";
+
+    public EcoleDirecteGradesFetchException(int httpCode, int responseCode, String message) {
+        super(httpCode, responseCode, DEFAULT_MESSAGE, message);
     }
 
     public EcoleDirecteGradesFetchException(Throwable cause) {
-        super(cause);
+        super(cause, DEFAULT_MESSAGE);
     }
 
     public EcoleDirecteGradesFetchException() {
-        super();
-    }
-
-    @Override
-    public String getMessage() {
-        return (message != null)
-                ? "Erreur lors de la récupération des notes (http " + code + ") : " + message
-                : "Erreur lors de la récupération des notes !";
+        super(DEFAULT_MESSAGE);
     }
 }

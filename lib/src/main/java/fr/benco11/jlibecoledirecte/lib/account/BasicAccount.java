@@ -42,6 +42,12 @@ public abstract sealed class BasicAccount implements Account permits DefaultStud
     }
 
     @Override
+    public boolean isModuleEnabled(ModuleType type) {
+        return modules.stream()
+                .anyMatch(module -> module.enabled() && module.code().equalsIgnoreCase(type.code()));
+    }
+
+    @Override
     public AccountType accountType() {
         return accountType;
     }
