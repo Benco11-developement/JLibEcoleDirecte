@@ -3,7 +3,6 @@ package fr.benco11.jlibecoledirecte.lib.http;
 import static fr.benco11.jlibecoledirecte.lib.http.HttpProtocol.HTTPS;
 
 import fr.benco11.jlibecoledirecte.lib.json.JsonService;
-import fr.benco11.jlibecoledirecte.lib.utils.Pair;
 import fr.benco11.jlibecoledirecte.lib.utils.TriFunction;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -32,12 +31,14 @@ public class DefaultHttpService implements HttpService {
             String body,
             TriFunction<Integer, Integer, String, T> toThrow)
             throws IOException, URISyntaxException, InterruptedException, T {
+        if (headers.size() % 2 != 0)
+            throw new IllegalArgumentException("Le format de headers HTTP clé/valeur n'est pas respecté !");
         HttpRequest.Builder requestBuilder =
                 HttpRequest.newBuilder().uri(protocol.getUrl(address).toURI()).headers(headers.toArray(String[]::new));
         HttpRequest request;
         if (method == HttpMethod.POST) {
             if (body == null) {
-                throw new IllegalArgumentException("Une requête POST nécessite un BodyPublisher !");
+                throw new IllegalArgumentException("Une requête POST nécessite un body !");
             }
             request = requestBuilder
                     .POST(HttpRequest.BodyPublishers.ofString(body))
@@ -49,16 +50,7 @@ public class DefaultHttpService implements HttpService {
         int responseCode = response.statusCode();
         String responseBody = response.body();
 
-        Pair<Boolean, Optional<ResponseDto>> successful = isRequestSuccessful(responseCode, responseBody);
-        boolean isSuccessful = successful.a();
-        Optional<ResponseDto> responseDto = successful.b();
-        if (!isSuccessful && toThrow != null) {
-            throw toThrow.apply(
-                    responseCode,
-                    responseDto.map(ResponseDto::code).orElse(-1),
-                    responseDto.map(ResponseDto::message).orElse(null));
-        }
-        return response.body();
+        return successfulResponseFilter(responseCode, responseBody, toThrow);
     }
 
     @Override
@@ -69,14 +61,21 @@ public class DefaultHttpService implements HttpService {
     }
 
     @Override
-    public Pair<Boolean, Optional<ResponseDto>> isRequestSuccessful(int responseCode, String responseBody) {
+    public <T extends Exception> String successfulResponseFilter(
+            int responseCode, String responseBody, TriFunction<Integer, Integer, String, T> toThrow) throws T {
         boolean isSuccessful = responseCode == 200 && !responseBody.isEmpty();
-        ResponseDto responseDto = null;
+        Optional<ResponseDto> responseDto = Optional.empty();
         if (isSuccessful) {
-            responseDto = jsonService.deserialize(responseBody, ResponseDto.class);
-            isSuccessful = responseDto.code() == 200;
+            responseDto = Optional.of(jsonService.deserialize(responseBody, ResponseDto.class));
+            isSuccessful = responseDto.get().code() == 200;
         }
-        return new Pair<>(isSuccessful, Optional.ofNullable(responseDto));
+        if (!isSuccessful && toThrow != null) {
+            throw toThrow.apply(
+                    responseCode,
+                    responseDto.map(ResponseDto::code).orElse(-1),
+                    responseDto.map(ResponseDto::message).orElse(null));
+        }
+        return responseBody;
     }
 
     public static List<String> defaultHeaders() {

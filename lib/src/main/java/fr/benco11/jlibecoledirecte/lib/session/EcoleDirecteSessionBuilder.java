@@ -27,10 +27,10 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
     public static final Duration DEFAULT_SESSION_DURATION = Duration.ofHours(2);
     private final String username;
     private final String password;
-    private Duration sessionDuration;
-    private HttpService httpService;
-    private AccountFactory accountFactory;
-    private JsonService jsonService;
+    protected Duration sessionDuration;
+    protected HttpService httpService;
+    protected AccountFactory accountFactory;
+    protected JsonService jsonService;
 
     public EcoleDirecteSessionBuilder(String username, String password) {
         this.username = username;
