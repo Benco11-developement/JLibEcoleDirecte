@@ -11,4 +11,8 @@ public class NumberUtils {
             throw toThrow;
         }
     }
+
+    public static boolean zeroOrNull(Number n) {
+        return n == null || n.doubleValue() == 0;
+    }
 }

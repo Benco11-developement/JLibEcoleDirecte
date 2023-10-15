@@ -1,5 +1,7 @@
 package fr.benco11.jlibecoledirecte.lib.grades;
 
+import static fr.benco11.jlibecoledirecte.lib.utils.NumberUtils.zeroOrNull;
+
 import fr.benco11.jlibecoledirecte.api.grades.Assignment;
 import fr.benco11.jlibecoledirecte.api.grades.Period;
 import fr.benco11.jlibecoledirecte.lib.grades.dto.*;
@@ -129,17 +131,17 @@ public interface GradesMapper {
     }
 
     default boolean isAverageValueBased(DisciplineDto discipline) {
-        return discipline.coef() == 0
-                && discipline.moyenne() == 0
-                && discipline.moyenneClasse() == 0
-                && discipline.moyenneMax() == 0
-                && discipline.moyenneMin() == 0;
+        return zeroOrNull(discipline.coef())
+                && zeroOrNull(discipline.moyenne())
+                && zeroOrNull(discipline.moyenneClasse())
+                && zeroOrNull(discipline.moyenneMax())
+                && zeroOrNull(discipline.moyenneMin());
     }
 
     default boolean isAverageValueBased(DisciplineSetDto disciplineSet) {
-        return disciplineSet.moyenneGenerale() == 0
-                && disciplineSet.moyenneClasse() == 0
-                && disciplineSet.moyenneMax() == 0
-                && disciplineSet.moyenneMin() == 0;
+        return zeroOrNull(disciplineSet.moyenneGenerale())
+                && zeroOrNull(disciplineSet.moyenneClasse())
+                && zeroOrNull(disciplineSet.moyenneMax())
+                && zeroOrNull(disciplineSet.moyenneMin());
     }
 }
