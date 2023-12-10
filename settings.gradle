@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'JLibEcoleDirecte'
-include 'api', 'lib', 'java8'
+include 'api', 'lib'
