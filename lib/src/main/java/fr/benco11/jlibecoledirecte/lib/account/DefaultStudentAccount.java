@@ -34,7 +34,7 @@ public sealed class DefaultStudentAccount extends BasicAccount implements Studen
     @Override
     public List<Period> periods() throws EcoleDirecteGradesFetchException {
         try {
-            JsonObject periodsJson = jsonService.dataBlock(httpService.post(
+            JsonObject periodsJson = jsonService.dataBlock(httpService.postHttps(
                     Endpoints.GRADE.asString(userProfile.id()),
                     tokenHeader(context.token()),
                     jsonService.serializeEmpty(),
@@ -62,7 +62,7 @@ public sealed class DefaultStudentAccount extends BasicAccount implements Studen
     @Override
     public SchoolLife schoolLife() throws EcoleDirecteSchoolLifeFetchException {
         try {
-            JsonObject schoolLifeJson = jsonService.dataBlock(httpService.post(
+            JsonObject schoolLifeJson = jsonService.dataBlock(httpService.postHttps(
                     Endpoints.SCHOOL_LIFE.asString(userProfile.id()),
                     tokenHeader(context.token()),
                     jsonService.serializeEmpty(),

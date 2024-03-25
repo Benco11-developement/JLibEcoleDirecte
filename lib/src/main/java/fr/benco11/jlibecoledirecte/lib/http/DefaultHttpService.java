@@ -34,7 +34,10 @@ public class DefaultHttpService implements HttpService {
         if (headers.size() % 2 != 0)
             throw new IllegalArgumentException("Le format de headers HTTP clé/valeur n'est pas respecté !");
         HttpRequest.Builder requestBuilder =
-                HttpRequest.newBuilder().uri(protocol.getUrl(address).toURI()).headers(headers.toArray(String[]::new));
+                HttpRequest.newBuilder().uri(protocol.getUrl(address).toURI());
+        if (!headers.isEmpty()) {
+            requestBuilder.headers(headers.toArray(String[]::new));
+        }
         HttpRequest request;
         if (method == HttpMethod.POST) {
             if (body == null) {
@@ -54,7 +57,7 @@ public class DefaultHttpService implements HttpService {
     }
 
     @Override
-    public <T extends Exception> String post(
+    public <T extends Exception> String postHttps(
             String address, List<String> headers, String body, TriFunction<Integer, Integer, String, T> toThrow)
             throws T, IOException, URISyntaxException, InterruptedException {
         return request(HTTPS, address, HttpMethod.POST, headers, body, toThrow);
@@ -66,8 +69,8 @@ public class DefaultHttpService implements HttpService {
         boolean isSuccessful = responseCode == 200 && !responseBody.isEmpty();
         Optional<ResponseDto> responseDto = Optional.empty();
         if (isSuccessful) {
-            responseDto = Optional.of(jsonService.deserialize(responseBody, ResponseDto.class));
-            isSuccessful = responseDto.get().code() == 200;
+            responseDto = Optional.ofNullable(jsonService.deserialize(responseBody, ResponseDto.class));
+            isSuccessful = responseDto.isEmpty() || responseDto.get().code() == 200;
         }
         if (!isSuccessful && toThrow != null) {
             throw toThrow.apply(

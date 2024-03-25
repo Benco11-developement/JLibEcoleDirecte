@@ -15,7 +15,7 @@ public interface HttpService {
             TriFunction<Integer, Integer, String, T> toThrow)
             throws IOException, URISyntaxException, InterruptedException, T;
 
-    <T extends Exception> String post(
+    <T extends Exception> String postHttps(
             String address, List<String> headers, String body, TriFunction<Integer, Integer, String, T> toThrow)
             throws T, IOException, URISyntaxException, InterruptedException;
 

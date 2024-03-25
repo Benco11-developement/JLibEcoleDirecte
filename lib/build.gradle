@@ -21,6 +21,15 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.assertj:assertj-core:3.25.1'
+
+    testImplementation 'org.wiremock:wiremock:3.4.2'
+    testImplementation "org.mockito:mockito-core:5.11.0"
+
+
 }
 
 shadowJar {
@@ -39,4 +48,8 @@ javadoc {
     options.encoding = 'UTF-8'
     options.source("17")
     setDestinationDir(file(".../docs/"))
+}
+
+test {
+    useJUnitPlatform()
 }

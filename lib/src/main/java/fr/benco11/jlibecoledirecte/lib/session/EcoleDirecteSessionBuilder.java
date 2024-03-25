@@ -75,7 +75,7 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
     public Session login() throws EcoleDirecteLoginException {
         try {
             LoginDtoInput loginDtoInput = new LoginDtoInput(username, password);
-            JsonObject loginResult = jsonService.deserialize(httpService.post(
+            JsonObject loginResult = jsonService.deserialize(httpService.postHttps(
                     Endpoints.LOGIN.asString(),
                     defaultHeaders(),
                     jsonService.serialize(loginDtoInput),
@@ -95,7 +95,7 @@ public class EcoleDirecteSessionBuilder implements SessionBuilder {
                     AccountDto.class);
             long idLogin = accountDto.idLogin();
 
-            JsonObject settingsResult = jsonService.deserialize(httpService.post(
+            JsonObject settingsResult = jsonService.deserialize(httpService.postHttps(
                     Endpoints.SETTINGS.asString(idLogin),
                     tokenHeader(token),
                     jsonService.serialize(new Object()),
