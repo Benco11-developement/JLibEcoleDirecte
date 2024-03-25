@@ -123,12 +123,7 @@ class DefaultHttpServiceTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> httpService.request(
-                        HttpProtocol.HTTP,
-                        "localhost:8080/login",
-                        HttpMethod.POST,
-                        headers,
-                        null,
-                        null));
+                        HttpProtocol.HTTP, "localhost:8080/login", HttpMethod.POST, headers, null, null));
     }
 
     @Test
