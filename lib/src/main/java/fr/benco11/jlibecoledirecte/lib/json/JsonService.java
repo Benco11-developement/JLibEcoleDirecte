@@ -15,8 +15,6 @@ public interface JsonService {
 
     <T> T deserialize(JsonElement jsonRepresentation, Class<T> objectClass);
 
-    <T> T deserialize(String json, Type objectType);
-
     <T> T deserialize(String json, Class<T> objectClass);
 
     JsonObject dataBlock(String json);

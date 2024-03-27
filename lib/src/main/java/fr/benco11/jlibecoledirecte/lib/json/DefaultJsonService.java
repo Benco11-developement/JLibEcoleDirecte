@@ -14,11 +14,16 @@ public class DefaultJsonService implements JsonService {
             .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
             .registerTypeAdapter(LocalDate.class, new LocalDateDeserializer())
             .registerTypeAdapter(LocalTime.class, new LocalTimeDeserializer())
+            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer.LocalDateTimeSerializer())
+            .registerTypeAdapter(LocalDate.class, new LocalDateDeserializer.LocalDateSerializer())
+            .registerTypeAdapter(LocalTime.class, new LocalTimeDeserializer.LocalTimeSerializer())
             .registerTypeAdapter(Double.class, new DoubleDeserializer())
+            .disableHtmlEscaping()
             .create();
 
     @Override
     public String serialize(Object o) {
+        if (o == null) return serializeEmpty();
         return "data=" + gson.toJson(o);
     }
 
@@ -40,11 +45,6 @@ public class DefaultJsonService implements JsonService {
     @Override
     public <T> T deserialize(JsonElement json, Class<T> tClass) {
         return gson.fromJson(json, tClass);
-    }
-
-    @Override
-    public <E> E deserialize(String json, Type objectType) {
-        return null;
     }
 
     public <T> T deserialize(String json, Class<T> tClass) {

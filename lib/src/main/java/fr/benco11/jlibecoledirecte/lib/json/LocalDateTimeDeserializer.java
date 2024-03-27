@@ -2,10 +2,7 @@ package fr.benco11.jlibecoledirecte.lib.json;
 
 import static fr.benco11.jlibecoledirecte.lib.utils.DateUtils.parseLocalDateTime;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,5 +17,14 @@ public class LocalDateTimeDeserializer implements JsonDeserializer<LocalDateTime
             return null;
         }
         return parseLocalDateTime(json.getAsString(), FORMATTER);
+    }
+
+    public static class LocalDateTimeSerializer implements JsonSerializer<LocalDateTime> {
+
+        @Override
+        public JsonElement serialize(
+                LocalDateTime localDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
+            return new JsonPrimitive(FORMATTER.format(localDateTime));
+        }
     }
 }
